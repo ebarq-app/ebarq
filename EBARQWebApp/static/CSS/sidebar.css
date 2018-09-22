@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600,300,400');
+
+.sidebar {
+  margin: 0;
+  top: 60.5px;
+  padding-top: 0;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  width: 250px;
+  background-color: #266dac;
+  position:relative;
+  height: 750px;
+  overflow: auto;
+}
+
+.sidebar a {
+  font-family: "Open Sans";
+  display: block;
+  color:white;
+  margin-bottom: 20px;
+  padding: 25px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color:  #ff8c1a;
+  color:black;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color:black;
+}
+
+.probootstrap-mobile-menu-active .sidebar a.active {
+  background-color:  #ff8c1a;
+  color:black;
+}
+
+.probootstrap-mobile-menu-active .sidebar a:hover:not(.active) {
+  background-color: #555;
+  color:black;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}

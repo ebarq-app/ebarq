@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ebarq</title>
+    <meta name="description" content="ebarq">
+    <meta name="keywords" content="ebarq">
+
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles-merged.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/sidebar.css' %}">
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: header -->
+
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+      <div class="container">
+          <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
+      </div>
+  </header>
+
+
+  <header role="banner" class="probootstrap-header">
+      <div class="container">
+          <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+          <div class="mobile-menu-overlay"></div>
+      </div>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+              <div class="sidebar probootstrap-nav ">
+                <a class = "active" href="{% url 'dashboard'  %}">Home</a>
+                 <a href="wuserprofile.html">My Profile</a>
+                 <a href="whorseprofile.html">Horse Profile</a>
+                 <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
+                 <a href="wreminder.html">Horse Details</a>
+                 <a href="wsettings.html">Settings</a>
+                 <a href="{% url 'login'  %}">Logout</a>
+              </div>
+          </ul>
+          <div class="extra-text visible-xs">
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <!-- BEGIN: Content -->
+  <section class="probootstrap-section">
+    <div class="container">
+      <div class="row probootstrap-gutter10">
+        <div class="col-md-4 col-sm-4"></div>
+        <div class="col-md-6 col-sm-6">
+          <h2><b>Hi {{ user.first_name }}</b></h2>
+          <a href="#" class="probootstrap-hover-overlay">
+            <img src="{% static 'IMAGES/barry.png' %}" class="profile-photo">
+            <div class="probootstrap-text-overlay">
+              <h3>Name: Barry</h3>
+              <p>ID: H10293</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-4"></div>
+        <div class="col-md-6 col-sm-6">
+          <a href="#" class="probootstrap-hover-overlay">
+            <img src="{% static 'IMAGES/jigily.png' %}" class="profile-photo">
+            <div class="probootstrap-text-overlay">
+              <h3>Name: Jigily</h3>
+              <p>ID: H10345</p>
+            </div>
+          </a>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Content -->
+
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  </body>
+</html>
+
+
+<script src="{% static 'js/scripts.min.js' %}"></script>
+<script src="{% static 'js/main.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>

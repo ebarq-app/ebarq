@@ -1,0 +1,113 @@
+.logo {
+  float: left;
+  color:  rgb(171, 40, 40);
+  padding-left: 20px;
+  font-size: 30px;
+  display: block;
+  font-weight: 900;
+  font-family: "Open Sans", sans-serif;
+}
+
+/*header*/
+.container {
+
+padding-right: 0;
+padding-left: 0;
+margin-right: auto;
+margin-left: 0;
+
+}
+
+.probootstrap-logo{
+padding-left: 0;
+z-index: 10;
+}
+.logbook-logo{
+  height: auto;
+      width: auto;
+      max-width: 150px;
+      max-height: 150px;
+padding-left: 0;
+}
+.ebarq-logo{
+  height: auto;
+      width: auto;
+      max-width: 300px;
+      max-height: 300px;
+      left: 0;
+padding-left: 0;
+position: absolute;
+z-index: 10;
+}
+
+.btn.btn-primary {
+
+border: 2px solid #266dac;
+background: #266dac;
+color: #fff;
+
+}
+
+/* dashboard-page */
+.probootstrap-gutter10 > div[class*="col-"] {
+
+  position: relative;
+  margin-top: 100px;
+
+}
+.profilephoto{
+
+  position: relative;
+
+}
+
+/* userperofilepage */
+.user-image {
+  padding-top: 100px;
+  padding-left: 150px;
+}
+.user-profile {
+  padding-top: 100px;
+  padding-left: 150px;
+}
+
+
+.photobutton{
+
+    background-color: #266dac; /* Green */
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+.editprofilebut{
+
+  background-color: #266dac; /* Green */
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 25px;
+
+}
+
+/* addrecordpage */
+.addrecord{
+
+  margin-top: 100px;
+  margin-left: 150px;
+
+}
+
+
+
+/* Your custom css code goes here */

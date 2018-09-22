@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EBARQ</title>
+
+    {% load static %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles-merged.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/sidebar.css' %}">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- START: header -->
+
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header headerstyle">
+      <div class="container">
+          <img src="{% static 'IMAGES/logo3.png' %}" class="probootstrap-logo">
+      </div>
+  </header>
+
+
+  <header role="banner" class="probootstrap-header">
+      <div class="container">
+          <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+          <div class="mobile-menu-overlay"></div>
+      </div>
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+              <div class="sidebar probootstrap-nav ">
+                 <a href="wdashboard.html">Home</a>
+                 <a href="wuserprofile.html">My Profile</a>
+                 <a href="whorseprofile.html">Horse Profile</a>
+                  <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
+                 <a class="active" href="wreminder.html">Horse Details</a>
+                 <a href="wsettings.html">Settings</a>
+                 <a href="{% url 'login'  %}">Logout</a>
+              </div>
+          </ul>
+          <div class="extra-text visible-xs">
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+  <!-- BEGIN: Content -->
+  <main>
+      <section id="next-section" class="probootstrap-section">
+        <div class="container">
+          <div class="row probootstrap-gutter60 mb50">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 user-image">
+              <figure><img src="{% static 'IMAGES/barry.png' %}" class="img-responsive"></figure>
+            </div>
+            <div class="col-md-4 user-image"></div>
+            <div class="col-md-4">
+              <h2 class="probootstrap-heading"><b>Hello Eleven Dev</b></h2>
+              <h3>Name: Barry</h3>
+              <h3>ID: H10293</h3>
+            </div>
+          </div>
+
+          <div class="row probootstrap-gutter60">
+            <div class="col-md-4 mb30"></div>
+            <div class="col-md-4 mb30">
+              <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}">   <b>Barry's Upcoming Events</b></h4>
+              <ul class="probootstrap-blog-list">
+                      <li><h4>Training:</h4>
+                      <span class="meta">10:00  18/9/2018</span>
+                      </li>
+                      <li><h4>Vet Visiting:</h4>
+                        <span class="meta">14:00  02/10/2018</span>
+                      </li>
+            </div>
+            <div class="col-md-4 mb30">
+              <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}">    <b>Barry's Upcoming Performances</b></h4>
+              <ul class="probootstrap-blog-list">
+
+                      <li><h4>Training:</h4>
+                        <span class="meta">10:00  18/9/2018</span>
+                        <span class="meta">Distance: 1850m</span>
+                        <span class="meta">Time: 1:54.700</span>
+                        <span class="meta">Avg Speed:57.9 km/h</span>
+                        <span class="meta">Came 8th place in practice competition</span>
+                      </li>
+
+                      <li><h4>Vet visiting</h4>
+                        <span class="meta">14:00-15:00  30/07/2018</span>
+                        <span class="meta">Distance: 940m</span>
+                        <span class="meta"> Time: 0:56.400 </span>
+                        <span class="meta">Avg Speed:60.4 km/h</span>
+                        <span class="meta">Came 4th place in competition</span>
+                      </li>
+
+                      <li><h4>Training</h4>
+                        <span class="meta">10:00-12:00  25/07/2018</span>
+                        <span class="meta">Distance: 1045m</span>
+                        <span class="meta"> Time: 1:03.300 </span>
+                        <span class="meta">Avg Speed:59.7 km/h</span>
+                        <span class="meta">Came 2nd place in practice competition</span>
+                      </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+
+  <!-- END: Content -->
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  </body>
+</html>
+
+<script src="{% static 'js/scripts.min.js' %}"></script>
+<script src="{% static 'js/main.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
