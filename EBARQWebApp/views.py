@@ -14,14 +14,16 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.views.decorators.http import require_http_methods
+
 
 
 # Create your views here.
 def index(request):
     return redirect('login')
 
+@require_http_methods(["GET","POST"])
 def login_view(request):
-
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -46,7 +48,7 @@ def login_view(request):
     #     else:
     #         return render(request, 'login.html')
 
-
+@require_http_methods(["GET","POST"])
 def signup(request):
     #if user is authenticated go to dashboard
     if request.user.is_authenticated:
@@ -68,6 +70,7 @@ def signup(request):
                     'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
                     'token': account_activation_token.make_token(user),
                 })
+                user.is_active = False
 
                 mail_subject = 'Activate your EBARQ account.'
                 to_email = form.cleaned_data.get('email')
@@ -101,12 +104,12 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+@require_http_methods(["GET","POST"])
 def horse_add_view(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = HorseSignupForm(request.POST)
             if form.is_valid():
-                print(" we are here")
                 # create directory for this horse
                 # if not os.path.isdir(os.path.join(os.getcwd(), '/images/' + str(form.horse_id))):
                 #     os.mkdir('/images/' + str(form.horse_id))
@@ -124,7 +127,6 @@ def horse_add_view(request):
                 h.save()
                 return redirect('/dashboard', {'message':'Horse Successfully Created!'})
             else:
-                print ("invalid")
                 form = HorseSignupForm()
                 return redirect('/horse_add', {'message':'One or more fields invalid, please correct these fields'})
         form = HorseSignupForm()
