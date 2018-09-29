@@ -23,12 +23,13 @@
 
       <div class="probootstrap-loader"></div>
 
-      <header role="banner" class="probootstrap-header2">
+      <header role="banner" class="probootstrap-header">
         <div class="container">
-            <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="ebarq-logo">
+            <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="probootstrap-logo ebarq-logo">
               </div>
       </header>
       <!-- END: header -->
+
 
   <section class="probootstrap-section">
     <div class="container">
@@ -47,6 +48,11 @@
                 <div class="form-group">
                 <label> {{field.label_tag}} </label>
                 <div>  {{field }} </div>
+                <div>
+                    {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
                 </div>
 
                 {% endfor %}

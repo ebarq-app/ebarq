@@ -15,32 +15,36 @@ class HorseOwnerSignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(HorseOwnerSignUpForm, self).__init__(*args, **kwargs)
         for fieldname in ['username', 'password1', 'password2']:
-            self.fields[fieldname].help_text = None
+            # self.fields[fieldname].help_text = None
             self.fields['password1'].widget.attrs.update({'class' : 'form-control'})
             self.fields['password2'].widget.attrs.update({'class' : 'form-control'})
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
         widgets = {
-               'username': forms.TextInput(attrs={'class': 'form-control'}), 
-               'password1': forms.TextInput(attrs={'class': 'form-control'}), 
-               'password2': forms.TextInput(attrs={'class': 'form-control'}), 
+               'username': forms.TextInput(attrs={'class': 'form-control'}),
+               'password1': forms.TextInput(attrs={'class': 'form-control'}),
+               'password2': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-class HorseSignupForm(ModelForm):
-    name = forms.CharField(max_length=50)
-    age = forms.IntegerField()
-    gender = forms.CharField(max_length=6)
-    date_of_birth = forms.DateField() # Change for current date - age input
-    weight = forms.IntegerField()
-    height = forms.IntegerField()
-
-    def __init__(self, *args, **kwargs):
-        super(HorseSignupForm, self).__init__(*args, **kwargs)
+class HorseSignupForm(forms.ModelForm):
+    # name = forms.CharField(max_length=50)
+    # age = forms.IntegerField()
+    # gender = forms.CharField(max_length=6)
+    # date_of_birth = forms.DateField() # Change for current date - age input
+    # weight = forms.IntegerField()
+    # height = forms.IntegerField()
+    #
+    # whorl = forms.ImageField()
+    # side_face = forms.ImageField()
+    # full_side = forms.ImageField()
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(HorseSignupForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = Horse
-        fields = ('name','age','gender','date_of_birth','weight','height')
+        fields = ('name','age','gender','date_of_birth','weight','height', 'whorl', 'side_face', 'full_side')
 
 class QuestionForm(ModelForm):
     question = forms.CharField(max_length=100)

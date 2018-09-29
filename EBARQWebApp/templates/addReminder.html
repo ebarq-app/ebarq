@@ -41,14 +41,13 @@
      <nav role="navigation" class="probootstrap-nav hidden-xs">
          <ul class="probootstrap-main-nav">
              <div class="sidebar probootstrap-nav ">
-                <a href="{% url 'dashboard'  %}">Home</a>
-                <a href="wuserprofile.html">My Profile</a>
-                <a href="whorseprofile.html">Horse Profile</a>
-                 <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
-                <a href="wreminder.html">Reminders</a>
-                <a href="wperformance.html">Performances</a>
-                <a href="wsettings.html">Settings</a>
-                <a href="{% url 'login'  %}">Logout</a>
+              <a href="{% url 'dashboard'  %}">Home</a>
+              <a href="{% url 'userprofile'  %}">My Profile</a>
+              <a href="{% url 'horseprofile'  %}">Horse Profile</a>
+              <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
+              <a href="{% url 'horsedetail'  %}">Horse Details</a>
+              <a href="{% url 'setting'  %}">Settings</a>
+              <a href="{% url 'login'  %}">Logout</a>
              </div>
          </ul>
          <div class="extra-text visible-xs">

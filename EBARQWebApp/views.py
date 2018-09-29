@@ -28,20 +28,23 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username = username, password = password)
+
         if user is not None:
-            # We have found our user (Login Success!)
-            login(request, user)
-            # return render(request, 'dashboard.html')
-            return redirect('/dashboard')
+            print (user.is_active)
+            if user.is_active == True:
+                # We have found our user (Login Success!)
+                login(request, user)
+                # return render(request, 'dashboard.html')
+                return redirect('/dashboard')
 
         else:
             # Failed login attempt - needs adding to html
             return render(request, 'login.html', {'error_message': "Sorry, you've entered incorrect username/password"})
 
-    # We need this section for later on just commenting it out for now for convenience
     else:
         return render(request, 'login.html')
 
+    # We need this section for later on just commenting it out for now for convenience
     # elif request.method == 'GET':
     #     if request.user.is_authenticated:
     #         return redirect('/dashboard')
@@ -51,41 +54,39 @@ def login_view(request):
 @require_http_methods(["GET","POST"])
 def signup(request):
     #if user is authenticated go to dashboard
-    if request.user.is_authenticated:
-        return redirect('/dashboard')
-    else:
-        if request.method == 'POST':
-            form = HorseOwnerSignUpForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                user = form.save()
-                user.refresh_from_db()
-                user.save()
-                horse_owner = HorseOwner(user_id=user, first_name = data.get('first_name'), last_name = data.get('last_name'))
-                horse_owner.save()
-                current_site = get_current_site(request)
-                message = render_to_string('acc_active_email.html', {
-                    'user':user,
-                    'domain':current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
-                    'token': account_activation_token.make_token(user),
-                })
-                user.is_active = False
+    if request.method == 'POST':
+        form = HorseOwnerSignUpForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = form.save()
+            user.refresh_from_db()
+            user.is_active = False
+            user.save()
+            horse_owner = HorseOwner(user_id=user, first_name = data.get('first_name'), last_name = data.get('last_name'))
+            horse_owner.save()
+            current_site = get_current_site(request)
+            message = render_to_string('acc_active_email.html', {
+                'user':user,
+                'domain':current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
+                'token': account_activation_token.make_token(user),
+            })
 
-                mail_subject = 'Activate your EBARQ account.'
-                to_email = form.cleaned_data.get('email')
-                email = EmailMessage(mail_subject, message, to=[to_email])
-                email.send()
-                return HttpResponse('Please confirm your email address to complete the registration')
+            mail_subject = 'Activate your EBARQ account.'
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
 
-        form = HorseOwnerSignUpForm()
-        return render(request, 'signup.html', {'form': form})
+    form = HorseOwnerSignUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 def dashboard(request):
     if request.user.is_authenticated:
         profile = User.objects.get(id = request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
-        return render(request, 'dashboard.html',{'user' : horse_owner})
+        horse = Horse.objects.filter(horse_owner = horse_owner)
+        return render(request, 'dashboard.html',{'user' : horse_owner , 'horses': horse })
     else:
         return HttpResponseRedirect('/login')
 
@@ -108,21 +109,22 @@ def activate(request, uidb64, token):
 def horse_add_view(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            form = HorseSignupForm(request.POST)
+            form = HorseSignupForm(request.POST, request.FILES)
             if form.is_valid():
-                # create directory for this horse
-                # if not os.path.isdir(os.path.join(os.getcwd(), '/images/' + str(form.horse_id))):
-                #     os.mkdir('/images/' + str(form.horse_id))
                 data = form.cleaned_data
-                print(data.get('name'))
                 name = data.get('name')
                 age = data.get('age')
                 gender = data.get('gender')
                 date_of_birth = data.get('date_of_birth')
                 weight = data.get('weight')
                 height = data.get('height')
+                whorl = data.get('whorl')
+                side_face = data.get('side_face')
+                full_side = data.get('full_side')
+
                 h = Horse(name=name,age=age,gender=gender,date_of_birth=date_of_birth,
-                          weight=weight,height=height,horse_owner=HorseOwner.objects.get(user_id = request.user))
+                          weight=weight,height=height,whorl=whorl,side_face=side_face,
+                          full_side=full_side,horse_owner=HorseOwner.objects.get(user_id = request.user))
 
                 h.save()
                 return redirect('/dashboard', {'message':'Horse Successfully Created!'})
@@ -134,10 +136,11 @@ def horse_add_view(request):
 
 def ebarqdashboard(request):
         # return HttpResponseRedirect('/ebarqdashboard')
+
         return render(request,'ebarqdashboard.html')
 
 def addperformance(request):
-    return render(request,'addperformance.html')
+    return render(request,'addrecord.html')
 
 def addreminder(request):
         return render(request,'addreminder.html')
@@ -147,3 +150,16 @@ def horsedetail(request):
 
 def userprofile(request):
         return render(request,'userprofile.html')
+
+def horseprofile(request):
+    if request.user.is_authenticated:
+        profile = User.objects.get(id = request.user.id)
+        horse_owner = HorseOwner.objects.get(user_id=profile)
+        horse = Horse.objects.filter(horse_owner = horse_owner)
+        return render(request, 'horseprofile.html',{'horses': horse })
+
+def setting(request):
+        return render(request,'setting.html')
+
+def addhorse(request):
+        return render(request,'horse_add.html')

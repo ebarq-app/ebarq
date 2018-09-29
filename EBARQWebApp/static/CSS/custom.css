@@ -61,8 +61,9 @@ color: #fff;
 
 }
 
-/* userperofilepage */
+/* userprofilepage */
 .user-image {
+  margin-top: 100px;
   padding-top: 100px;
   padding-left: 150px;
 }
@@ -74,7 +75,7 @@ color: #fff;
 
 .photobutton{
 
-    background-color: #266dac; /* Green */
+    background-color: #266dac; 
     border: none;
     border-radius: 12px;
     color: white;
@@ -87,7 +88,7 @@ color: #fff;
 }
 .editprofilebut{
 
-  background-color: #266dac; /* Green */
+  background-color: #266dac;
   border: none;
   border-radius: 12px;
   color: white;
@@ -106,6 +107,45 @@ color: #fff;
   margin-top: 100px;
   margin-left: 150px;
 
+}
+
+/* horsedetailpage */
+.addbutton{
+
+  background-color: #266dac; 
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 40px;
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+
+/* horseprofilepage */
+.addhorsebutton{
+
+  background-color: #266dac; 
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+
+}
+
+.form-group{
+  z-index: 24;
+}
+
+.col-md-4{
+  z-index: 24;
 }
 
 

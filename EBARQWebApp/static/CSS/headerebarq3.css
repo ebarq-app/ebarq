@@ -2,8 +2,8 @@
 
 padding-top: 0;
 padding-bottom: 0;
-height: auto;
-max-height: 75px;
+height: 75px;
+/* max-height: 75px; */
 width: 100%;
 background: #095e0b;
 z-index: 0;

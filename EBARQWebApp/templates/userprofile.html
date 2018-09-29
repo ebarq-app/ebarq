@@ -25,7 +25,7 @@
 
   <header role="banner" class="probootstrap-header">
       <div class="container">
-          <img src="{% static 'IMAGES/logo3.png' %}" class="probootstrap-logo">
+          <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
       </div>
   </header>
 
@@ -38,13 +38,12 @@
       <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
               <div class="sidebar probootstrap-nav ">
-                 <a href="{% url 'dashboard'  %}">Home</a>
-                 <a class="active" href="wuserprofile.html">My Profile</a>
-                 <a href="whorseprofile.html">Horse Profile</a>
+                <a href="{% url 'dashboard'  %}">Home</a>
+                 <a class = "active" href="{% url 'userprofile'  %}">My Profile</a>
+                 <a href="{% url 'horseprofile'  %}">Horse Profile</a>
                  <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
-                 <a href="wreminder.html">Reminders</a>
-                 <a href="wperformance.html">Performances</a>
-                 <a href="wsettings.html">Settings</a>
+                 <a href="{% url 'horsedetail'  %}">Horse Details</a>
+                 <a href="{% url 'setting'  %}">Settings</a>
                  <a href="{% url 'login'  %}">Logout</a>
               </div>
           </ul>
@@ -56,14 +55,16 @@
   </header>
   <!-- END: header -->
   <!-- BEGIN: Content -->
-  <main>
-      <section id="next-section" class="probootstrap-section">
-        <div class="container">
+  <!-- <main> -->
+      <!-- <section id="next-section" class="probootstrap-section"> -->
+        <!-- <div class="container"> -->
           <div class="row mb50">
-              <div class="col-md-4"> </div>
+              <div class="col-md-2"> </div>
             <div class="col-md-4 user-image">
               <figure><img src="{% static 'IMAGES/user.png' %}" alt="user photo" class="img-responsive"></figure>
-              <button type="button" class="photobutton"><b>Change Photo</b></button>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Change Photo">
+              </div>
             </div>
             <div class="col-md-4"> </div>
             <div class="col-md-4 user-profile">
@@ -74,14 +75,16 @@
               <h2 class="probootstrap-heading"><b>Contact Number:</b></h2>
               <h2 class="probootstrap-heading">0432534342</h2>
 
-              <button type="button" class="editprofilebut"><b>Edit Profile</b></button>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Edit Profile">
+              </div>
             </div>
 
-          </div>
+          <!-- </div> -->
 
-      </section>
+      <!-- </section> -->
 
-    </main>
+    <!-- </main> -->
 
 
 <!-- END: Content -->
