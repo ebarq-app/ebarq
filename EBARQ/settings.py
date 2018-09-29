@@ -84,6 +84,7 @@ if 'RDS_DB_NAME' in os.environ:
             'PASSWORD': os.environ['RDS_PASSWORD'],
             'HOST': os.environ['RDS_HOSTNAME'],
             'PORT': os.environ['RDS_PORT'],
+        }
     }
 else:
     DATABASES = {
@@ -128,8 +129,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+# used to be /templates/
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
-STATIC_URL = '/templates/'
+STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
