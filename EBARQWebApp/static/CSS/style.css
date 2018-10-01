@@ -94,18 +94,6 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   text-decoration: none;
 }
 
-.probootstrap-header {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  width: 100%;
-  background: #ffffff;
-  z-index: 12;
-  position: absolute;
-  top: 0;
-  -webkit-box-shadow: 0px 6px 68px -6px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 6px 68px -6px rgba(0, 0, 0, 0.2);
-}
-
 .probootstrap-logo {
   float: left;
   color: #2866AB;

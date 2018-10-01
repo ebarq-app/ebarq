@@ -1,19 +1,27 @@
 .probootstrap-header {
 
-    padding-top: 0;
-    padding-bottom: 0;
-    width: 100%;
-    z-index: 12;
-    position: absolute;
-    top: 0;
-    
-    }
+padding-top: 0;
+padding-bottom: 0;
+height: auto;
+max-height: 150px;
+width: 100%;
+z-index: 0;
+position: absolute;
+    /*position: fixed;*/
+top: 0;
+
+}
+
+.container-header{
+    z-index: 0;
+    background-color: #FFFFFF;
+}
 .headerstyle {
 
     -webkit-box-shadow: 0 6px 68px -6px rgba(0,0,0,.2);
     box-shadow: 0 6px 68px -6px rgba(0,0,0,.2);
 
-    }
+}
 
 .probootstrap-nav{
     margin-top: 107.5px;

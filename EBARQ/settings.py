@@ -89,9 +89,13 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME':'ebarq',
+            'USER': 'admin',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
 
 # Password validation
@@ -129,10 +133,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-# used to be /templates/
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

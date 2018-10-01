@@ -43,3 +43,19 @@ class Question(models.Model):
     def __str__(self):
         # Shows the question on admin page
         return self.question
+
+class AddPerformance(models.Model):
+    horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
+
+    time = models.TimeField()
+    type = models.CharField(max_length=100)
+    duration = models.IntegerField()
+    additional = models.CharField(max_length=250)
+
+class AddReminder(models.Model):
+    horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
+
+    event = models.CharField(max_length=100)
+    time = models.TimeField()
+    date = models.DateField()
+    notes = models.CharField(max_length=250)

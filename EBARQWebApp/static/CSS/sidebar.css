@@ -1,9 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600,300,400');
 
+/*.ebarq-button {*/
+  /*font-family: "Open Sans";*/
+  /*display: block;*/
+  /*width: 100px;*/
+  /*height: 200px;*/
+  /*padding-right: 30px;*/
+  /*padding-bottom: 50px;*/
+  /*padding-left: 20px;*/
+  /*background-color: #095e0b;*/
+/*}*/
+.btn{
+  font-family: "Open Sans";
+  padding: 14px 24px;
+  border: 2px;
+}
+.btn-outline-primary{
+
+}
 .sidebar {
   margin: 0;
   padding-top: 0;
-  padding-right: 30px;
+  padding-right: 20px;
   padding-bottom: 50px;
   padding-left: 20px;
   width: 250px;
@@ -11,6 +29,7 @@
   position:relative;
   height: 750px;
   overflow: auto;
+  resize: vertical;
 }
 
 .sidebar a {
@@ -20,6 +39,8 @@
   margin-bottom: 20px;
   padding: 25px;
   text-decoration: none;
+  text-align: center;
+  resize: vertical;
 }
 
 .sidebar a.active {
@@ -29,6 +50,41 @@
 
 .sidebar a:hover:not(.active) {
   background-color: #555;
+  color:black;
+}
+
+.sidebar2 {
+  margin: 0;
+  padding-top: 0;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  width: 250px;
+  border-right: 3px solid black;
+  border-radius: 2px;
+  background-color: white;
+  position:relative;
+  height: 750px;
+  overflow: auto;
+}
+
+.sidebar2 a {
+  font-family: "Open Sans";
+  display: block;
+  color:black;
+  margin-bottom: 20px;
+  padding: 25px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.sidebar2 a.active {
+  background-color:  #ff8c1a;
+  color:black;
+}
+
+.sidebar2 a:hover:not(.active) {
+  background-color:	#C0C0C0;
   color:black;
 }
 
