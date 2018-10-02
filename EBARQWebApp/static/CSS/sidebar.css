@@ -29,7 +29,6 @@
   position:relative;
   height: 750px;
   overflow: auto;
-  resize: vertical;
 }
 
 .sidebar a {
@@ -40,7 +39,6 @@
   padding: 25px;
   text-decoration: none;
   text-align: center;
-  resize: vertical;
 }
 
 .sidebar a.active {

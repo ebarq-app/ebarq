@@ -1,0 +1,78 @@
+{% extends "headerLogbook.html" %}
+{% block content %}
+{% load staticfiles %}<!---->
+<!-- END: header -->
+<!-- BEGIN: Content -->
+<!-- <main>
+    <section id="next-section" class="probootstrap-section">
+      <div class="container"> -->
+<div class="row probootstrap-gutter60 mb50">
+    <div class="col-md-3"></div>
+    <div class="col-md-4 user-image">
+        <figure><img src="{% static 'IMAGES/barry.png' %}" class="img-responsive"></figure>
+    </div>
+    <div class="col-md-2 user-image"></div>
+    <div class="col-md-4">
+        <h2 class="probootstrap-heading"><b>Hello Eleven Dev</b></h2>
+        <h3>Name: Barry</h3>
+        <h3>ID: H10293</h3>
+    </div>
+</div>
+
+<div class="row probootstrap-gutter60">
+    <div class="col-md-3 mb30"></div>
+    <div class="col-md-4 mb30">
+        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Barry's Upcoming Events</b></h4>
+        <ul class="probootstrap-blog-list">
+            <li><h4>Training:</h4>
+                <span class="meta">10:00  18/9/2018</span>
+            </li>
+            <li><h4>Vet Visiting:</h4>
+                <span class="meta">14:00  02/10/2018</span>
+            </li>
+        </ul>
+        <a href="{% url 'addreminder'  %}">
+            <button type="button" class="addbutton"><b> Add Reminder</b></button>
+        </a>
+    </div>
+    <div class="col-md-4 mb30">
+        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Barry's Upcoming Performances</b></h4>
+        <ul class="probootstrap-blog-list">
+
+            <li><h4>Training:</h4>
+                <span class="meta">10:00  18/9/2018</span>
+                <span class="meta">Distance: 1850m</span>
+                <span class="meta">Time: 1:54.700</span>
+                <span class="meta">Avg Speed:57.9 km/h</span>
+                <span class="meta">Came 8th place in practice competition</span>
+            </li>
+
+            <li><h4>Vet visiting</h4>
+                <span class="meta">14:00-15:00  30/07/2018</span>
+                <span class="meta">Distance: 940m</span>
+                <span class="meta"> Time: 0:56.400 </span>
+                <span class="meta">Avg Speed:60.4 km/h</span>
+                <span class="meta">Came 4th place in competition</span>
+            </li>
+
+            <li><h4>Training</h4>
+                <span class="meta">10:00-12:00  25/07/2018</span>
+                <span class="meta">Distance: 1045m</span>
+                <span class="meta"> Time: 1:03.300 </span>
+                <span class="meta">Avg Speed:59.7 km/h</span>
+                <span class="meta">Came 2nd place in practice competition</span>
+            </li>
+
+        </ul>
+        <a href="{% url 'addperformance'  %}">
+            <button type="button" class="addbutton"><b> Add Performance</b></button>
+        </a>
+    </div>
+</div>
+<!-- </div>
+</section>
+</main> -->
+
+
+<!-- END: Content -->
+{% endblock %}

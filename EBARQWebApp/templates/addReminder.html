@@ -1,61 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ebarq</title>
-    <meta name="description" content="ebarq">
-    <meta name="keywords" content="ebarq">
-
-    {% load static %}
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles-merged.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'CSS/sidebar.css' %}">
-
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-
- <!-- START: header -->
-
- <div class="probootstrap-loader"></div>
-
- <header role="banner" class="probootstrap-header">
-     <div class="container">
-         <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
-     </div>
- </header>
-
-
- <header role="banner" class="probootstrap-header">
-     <div class="container">
-         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
-         <div class="mobile-menu-overlay"></div>
-     </div>
-     <nav role="navigation" class="probootstrap-nav hidden-xs">
-         <ul class="probootstrap-main-nav">
-             <div class="sidebar probootstrap-nav ">
-              <a href="{% url 'dashboard'  %}">Home</a>
-              <a href="{% url 'userprofile'  %}">My Profile</a>
-              <a href="{% url 'horseprofile'  %}">Horse Profile</a>
-              <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
-              <a href="{% url 'horsedetail'  %}">Horse Details</a>
-              <a href="{% url 'setting'  %}">Settings</a>
-              <a href="{% url 'login'  %}">Logout</a>
-             </div>
-         </ul>
-         <div class="extra-text visible-xs">
-           <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-         </div>
-       </nav>
-   </div>
- </header>
+{% extends "headerLogbook.html" %}
+{% block content %}
+{% load staticfiles %}
  <!-- END: header -->
 
   <!-- BEGIN: Content -->
@@ -65,7 +10,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-6 addrecord">
             <form action="#" method="post" class="probootstrap-form">
-              <h2><b>Add a record for Barry</b></h2>
+              <h2><b>Add a Reminder for Barry</b></h2>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -103,17 +48,4 @@
 
   </main>
 
-
-  <!-- END: Content -->
-  <div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
-  </div>
-
-
-<script src="{% static 'js/scripts.min.js' %}"></script>
-<script src="{% static 'js/main.min.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-
-
-  </body>
-</html>
+{% endblock %}

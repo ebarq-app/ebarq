@@ -188,8 +188,8 @@ def addreminder(request):
     return render(request, 'addReminder.html')
 
 
-def horsedetail(request):
-    return render(request, 'horseDetail.html')
+def horseReminders(request):
+    return render(request, 'horseReminders.html')
 
 
 def userprofile(request):
@@ -206,6 +206,14 @@ def horseprofile(request):
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
         return render(request, 'horseProfile.html', {'horses': horse})
+def horse_inDepth(request):
+    # if request.user.is_authenticated:
+    #     profile = User.objects.get(id=request.user.id)
+    #     horse_owner = HorseOwner.objects.get(user_id=profile)
+    #     horse = Horse.objects.filter(horse_owner=horse_owner)
+    #     return render(request, 'horse_inDepth.html', {'horses': horse})
+    return render(request,'horse_inDepth.html')
+
 
 
 def setting(request):

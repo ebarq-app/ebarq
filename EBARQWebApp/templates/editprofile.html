@@ -1,100 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EBARQ</title>
+{% extends "headerLogbook.html" %}
+{% block content %}
+{% load staticfiles %}
+<!-- END: header -->
 
-    {% load static %}
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles-merged.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'CSS/sidebar.css' %}">
-
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!-- START: header -->
-
-  <div class="probootstrap-loader"></div>
-
-  <header role="banner" class="probootstrap-header">
-      <div class="container">
-          <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
-      </div>
-  </header>
-
-
-  <header role="banner" class="probootstrap-header">
-      <div class="container">
-          <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
-          <div class="mobile-menu-overlay"></div>
-      </div>
-      <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-              <div class="sidebar probootstrap-nav ">
-                <a href="{% url 'dashboard'  %}">Home</a>
-                 <a class = "active" href="{% url 'userprofile'  %}">My Profile</a>
-                 <a href="{% url 'horseprofile'  %}">Horse Profile</a>
-                 <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
-                 <a href="{% url 'horsedetail'  %}">Horse Details</a>
-                 <a href="{% url 'setting'  %}">Settings</a>
-                 <a href="{% url 'login'  %}">Logout</a>
-              </div>
-          </ul>
-          <div class="extra-text visible-xs">
-            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-          </div>
-        </nav>
+<!-- BEGIN: Content -->
+<!-- <main>
+      <section id="next-section" class="probootstrap-section"> -->
+<!-- <div class="container"> -->
+<div class="row mb50">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 user-image">
+        <figure><img src="{% static 'IMAGES/user.png' %}" alt="user photo" class="img-responsive"></figure>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Change Photo">
+        </div>
     </div>
-  </header>
-  <!-- END: header -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4 user-profile">
+        <h2 class="probootstrap-heading"><b>User ID:</b></h2>
+        <h2 class="probootstrap-heading">5329345112</h2>
+        <h2 class="probootstrap-heading"><b>User Name:</b></h2>
+        <input type="text" class="form-control" id="username" name="username">
+        <h2 class="probootstrap-heading"><b>Contact Number:</b></h2>
+        <input type="text" class="form-control" id="contact" name="contact">
 
-  <!-- BEGIN: Content -->
-  <!-- <main>
-        <section id="next-section" class="probootstrap-section"> -->
-          <!-- <div class="container"> -->
-            <div class="row mb50">
-                <div class="col-md-2"> </div>
-              <div class="col-md-4 user-image">
-                <figure><img src="{% static 'IMAGES/user.png' %}" alt="user photo" class="img-responsive"></figure>
-                <div class="form-group">
-                  <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Change Photo">
-                </div>
-              </div>
-              <div class="col-md-4"> </div>
-              <div class="col-md-4 user-profile">
-                <h2 class="probootstrap-heading"><b>User ID:</b></h2>
-                <h2 class="probootstrap-heading">5329345112</h2>
-                <h2 class="probootstrap-heading"><b>User Name:</b></h2>
-                <input type="text" class="form-control" id="username" name="username">
-                <h2 class="probootstrap-heading"><b>Contact Number:</b></h2>
-                <input type="text" class="form-control" id="contact" name="contact">
+        <button type="button" class="editprofilebut"><b>Save</b></button>
+    </div>
+</div>
 
-                <button type="button" class="editprofilebut"><b>Save</b></button>
-              </div>
+<!-- </div>
 
-            <!-- </div>
+</section>
 
-        </section>
-
-      </main> -->
+</main> -->
 
 
-  <!-- END: Content -->
-  <div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
-  </div>
-
-  </body>
-</html>
-
-<script src="{% static 'js/scripts.min.js' %}"></script>
-<script src="{% static 'js/main.min.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-
+{% endblock %}

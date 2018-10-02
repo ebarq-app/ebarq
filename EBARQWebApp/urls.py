@@ -24,10 +24,11 @@ url(r'^horse_add_view_new/',views.horse_add_view_new, name='horse_add_new'),
     url(r'^userprofile/',views.userprofile, name='userprofile'),
     url(r'^editprofile/',views.editprofile, name='editprofile'),
     url(r'^horseprofile/',views.horseprofile, name='horseprofile'),
+url(r'^horse_inDepth/',views.horse_inDepth, name='horse_inDepth'),
     # url(r'^addhorse/', views.addhorse, name='addhorse'),
 
     url(r'^addperformance/',views.addperformance, name='addperformance'),
     url(r'^addreminder/',views.addreminder, name='addreminder'),
-    url(r'^horsedetail/',views.horsedetail, name='horsedetail'),
+    url(r'^horseReminders/',views.horseReminders, name='horseReminders'),
      url(r'^setting/',views.setting, name='setting')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

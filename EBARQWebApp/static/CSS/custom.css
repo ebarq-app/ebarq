@@ -141,7 +141,6 @@
 
 /* horseprofilepage */
 .addhorsebutton {
-
     background-color: #266dac;
     border: none;
     border-radius: 12px;
@@ -152,6 +151,9 @@
     display: inline-block;
     font-size: 20px;
 
+}
+.horseinfo {
+    border: 2px black;
 }
 
 .form-group {

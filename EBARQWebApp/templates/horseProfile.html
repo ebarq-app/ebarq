@@ -16,15 +16,16 @@
             <figure><img src= {{ horse.whorl.url }} class="img-responsive"></figure>
           </div>
           <div class="col-md-4 user-image"></div>
-          <div class="col-md-4">
+          <!-- need to parse horse value via django to the horse detail.-->
+          <a href ="{% url 'horseReminders' %}" class="horseinfo col-md-4">
             <h3><b>Name: {{horse.name}}</b></h3>
             <h3><b>ID: {{horse.pk}}</b></h3>
             <h3>Age: {{horse.age}}</h3>
             <h3>Gender: {{horse.gender}}</h3>
-            <h3>Birthday:{{horse.date_of_birth}}</h3>
+            <h3>Birthday: {{horse.date_of_birth}}</h3>
             <h3>Weight: {{horse.weight}} kg</h3>
             <h3>Height: {{horse.height}} cm</h3>
-          </div>
+          </a>
           <div class="col-md-4 mb30"></div>
           <div class="col-md-4 mb30">
             <figure><img src= {{ horse.side_face.url }} class="img-responsive"></figure>
