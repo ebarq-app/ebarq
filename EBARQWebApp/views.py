@@ -55,8 +55,8 @@ def signup(request):
         if request.method == 'POST':
             form = HorseOwnerSignUpForm(request.POST)
             if form.is_valid():
-                data = form.cleaned_data
                 user = form.save()
+                user.refresh_from_db()
                 user.save()
                 horse_owner = HorseOwner(user_id=user, first_name = data.get('first_name'), last_name = data.get('last_name'))
                 horse_owner.save()
