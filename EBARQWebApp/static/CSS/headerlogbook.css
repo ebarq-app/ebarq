@@ -1,84 +1,109 @@
 .probootstrap-header {
 
-padding-top: 0;
-padding-bottom: 0;
-height: auto;
-max-height: 150px;
-width: 100%;
-z-index: 0;
-position: absolute;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: auto;
+    max-height: 100px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
     /*position: fixed;*/
-top: 0;
+    top: 0;
 
 }
 
-.container-header{
+/*.bannerbuffer {*/
+    /*padding-top: 0;*/
+    /*padding-bottom: 100px;*/
+    /*right: 100px;*/
+    /*!*padding-left: 100px;*!*/
+    /*height: auto;*/
+    /*max-height: 150px;*/
+    /*width: 100%;*/
+    /*z-index: 0;*/
+    /*position: absolute;*/
+    /*!*position: fixed;*!*/
+    /*top: 0;*/
+/*}*/
+
+.container-header {
     z-index: 0;
     background-color: #FFFFFF;
 }
+
 .headerstyle {
 
-    -webkit-box-shadow: 0 6px 68px -6px rgba(0,0,0,.2);
-    box-shadow: 0 6px 68px -6px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 6px 68px -6px rgba(0, 0, 0, .2);
+    box-shadow: 0 6px 68px -6px rgba(0, 0, 0, .2);
 
 }
 
-.probootstrap-nav{
+.probootstrap-nav {
     margin-top: 107.5px;
-    float:left;
+    float: left;
     margin-left: 0;
     padding-left: 0;
 }
 
-.probootstrap-nav-after{
-    float:right;
+.probootstrap-nav-after {
+    float: right;
     margin-left: 60px;
 }
-.probootstrap-mobile-menu-active .probootstrap-nav{
-    text-align:left;
-    position:fixed;
-    display:block!important;
-    overflow-y:auto;
-    top:0;right:0;bottom:0;
-    z-index:1100;
-    height:auto;
-    width:300px;
-    background:#266dac;
-    padding:40px;
-    -webkit-transition:.3s all ease-out;
-    transition:.3s all ease-out;
-    -webkit-transform:translateX(300px);
-    transform:translateX(300px);
+
+.probootstrap-mobile-menu-active .probootstrap-nav {
+    text-align: left;
+    position: fixed;
+    display: block !important;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1100;
+    height: auto;
+    width: 300px;
+    background: #266dac;
+    padding: 40px;
+    -webkit-transition: .3s all ease-out;
+    transition: .3s all ease-out;
+    -webkit-transform: translateX(300px);
+    transform: translateX(300px);
 }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text{
-        display:block;
-        float:left;
-        clear:both;
-        margin-top:30px;
-        color:#fff;
-    }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons{
-        padding:0;
-        margin:0 0 20px;
-    }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li{
-        display:inline-block;
-        zoom:1;
-        padding:0;
-        margin:0;
-    }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li a{
-        color:#fff;
-        padding:10px;
-    }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li:first-child a{
-        padding-left:0;
-    }
-    .probootstrap-mobile-menu-active .probootstrap-nav .extra-text h5{
-        text-transform:uppercase;
-        letter-spacing:.1em;
-        color:rgba(255,255,255,.5);
-    }
-    .probootstrap-mobile-menu-active.show .probootstrap-nav{
-        -webkit-transform:translateX(0);
-    }
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text {
+    display: block;
+    float: left;
+    clear: both;
+    margin-top: 30px;
+    color: #fff;
+}
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons {
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li {
+    display: inline-block;
+    zoom: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li a {
+    color: #fff;
+    padding: 10px;
+}
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text .social-buttons li:first-child a {
+    padding-left: 0;
+}
+
+.probootstrap-mobile-menu-active .probootstrap-nav .extra-text h5 {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgba(255, 255, 255, .5);
+}
+
+.probootstrap-mobile-menu-active.show .probootstrap-nav {
+    -webkit-transform: translateX(0);
+}

@@ -7,6 +7,7 @@
     <meta name="keywords" content="ebarq">
 
     {% load staticfiles %}
+    <script src="{% static 'js/echarts.min.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
     <!--<link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">-->
@@ -24,12 +25,13 @@
 
   <header role="banner" class="probootstrap-header-ebarq">
       <!--<div class="container">-->
-          <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="ebarq-logo">
+          <!-- <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="ebarq-logo"> -->
       <!--</div>-->
   </header>
 
 
   <header role="banner" class="probootstrap-header">
+        <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="ebarq-logo">
       <div class="container">
           <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
           <div class="mobile-menu-overlay"></div>

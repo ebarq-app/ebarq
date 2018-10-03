@@ -62,7 +62,7 @@
   border-radius: 2px;
   background-color: white;
   position:relative;
-  height: 750px;
+  height: auto;
   overflow: auto;
 }
 
@@ -74,6 +74,7 @@
   padding: 25px;
   text-decoration: none;
   text-align: center;
+  height: auto;
 }
 
 .sidebar2 a.active {

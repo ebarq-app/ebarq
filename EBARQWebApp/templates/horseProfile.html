@@ -17,7 +17,7 @@
           </div>
           <div class="col-md-4 user-image"></div>
           <!-- need to parse horse value via django to the horse detail.-->
-          <a href ="{% url 'horseReminders' %}" class="horseinfo col-md-4">
+          <a href ="{% url 'horse_inDepth' horse_id=horse.pk %}" class="horseinfo col-md-4">
             <h3><b>Name: {{horse.name}}</b></h3>
             <h3><b>ID: {{horse.pk}}</b></h3>
             <h3>Age: {{horse.age}}</h3>

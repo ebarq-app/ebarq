@@ -1,0 +1,87 @@
+<!--<!DOCTYPE html>-->
+{% extends "header.html" %}
+{% block content %}
+{% load staticfiles %}
+
+
+  <!-- END: header -->
+
+
+  <!-- BEGIN: Content -->
+  <!--<section class="probootstrap-section">-->
+    
+       <!-- prepare a DOM container with width and height -->
+
+    <div class="graph-area">
+            <div class="text-center section-heading">
+                    <h2>Ebarq Graph 2018</h2>
+                  </div>
+    <div id="main" style="width: 1200px;height:600px;"></div>
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+       
+
+        // specify chart configuration item and data
+        var option = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    legend: {
+        data:['Trainability','Rideability','Boldness','Handling compliance','Working compliance','Easy to stop','Forward going','Human social confidence','Non-human social confidence','Novel object confidence','Touch sensitivity','Easy to load','Independence','Repetitive behaviours']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['Trainability','Rideability','Boldness','Handling compliance','Working compliance','Easy to stop','Forward going','Human social confidence','Non-human social confidence','Novel object confidence','Touch sensitivity','Easy to load','Independence','Repetitive behaviours'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '',
+            min: 0,
+            max: 100,
+            interval: 10,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }
+    ],
+    series: [
+        {
+            name:'Janurary',
+            type:'line',
+            data:[55, 45, 30, 50, 42, 60, 43, 55, 35, 44, 45, 65, 48, 10]
+        },
+        {
+            name:'August',
+            type:'line',
+            data:[63, 53, 40, 55, 47, 66, 45, 59, 42, 48, 48, 70, 42, 10]
+        },
+        {
+            name:'Average',
+            type:'bar',
+            data:[70, 60, 50, 60, 50, 70, 50, 70, 58, 55, 30, 60, 50, 20]
+        }
+    ]
+};
+
+        myChart.setOption(option);
+           </script>
+</div>
+         
+
+  <!--</section>-->
+  <!-- END: Content -->
+
+{% endblock %}
