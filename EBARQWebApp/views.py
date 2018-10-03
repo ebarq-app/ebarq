@@ -120,8 +120,8 @@ def signup(request):
 
 
             login(request, user)
-            # return render(request, 'dashboard.html')
-            return redirect('/dashboard')
+            return render(request, 'dashboard.html')
+            # return redirect('/dashboard')
         else:
             return render(request, 'signup.html', {'form': form})
 
