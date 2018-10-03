@@ -139,20 +139,8 @@ def addperformance(request):
 def addreminder(request):
         return render(request,'addreminder.html')
 
-def addrecord(request):
-        return render(request,'addrecord.html')
-
 def horsedetail(request):
         return render(request,'horsedetail.html')
 
 def userprofile(request):
         return render(request,'userprofile.html')
-
-def horseprofile(request):
-        return render(request,'horseprofile.html')
-
-def setting(request):
-        return render(request,'setting.html')
-
-def addhorse(request):
-        return render(request,'horse_add.html')
