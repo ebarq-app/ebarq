@@ -47,44 +47,87 @@ def login_view(request):
     #         return render(request, 'login.html')
 
 
+# def signup(request):
+#     #if user is authenticated go to dashboard
+#     if request.user.is_authenticated:
+#         return redirect('/dashboard')
+#     else:
+#         if request.method == 'POST':
+#             form = HorseOwnerSignUpForm(request.POST)
+#             if form.is_valid():
+#                 data = form.cleaned_data
+#                 user = form.save()
+#                 user.refresh_from_db()
+#                 user.save()
+#                 horse_owner = HorseOwner(user_id=user, first_name = data.get('first_name'), last_name = data.get('last_name'))
+#                 horse_owner.save()
+#                 current_site = get_current_site(request)
+#                 message = render_to_string('acc_active_email.html', {
+#                     'user':user,
+#                     'domain':current_site.domain,
+#                     'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
+#                     'token': account_activation_token.make_token(user),
+#                 })
+#
+#                 mail_subject = 'Activate your EBARQ account.'
+#                 to_email = form.cleaned_data.get('email')
+#                 email = EmailMessage(mail_subject, message, to=[to_email])
+#                 email.send()
+#                 return HttpResponse('Please confirm your email address to complete the registration')
+#
+#         form = HorseOwnerSignUpForm()
+#         return render(request, 'signup.html', {'form': form})
+#
+# def dashboard(request):
+#     if request.user.is_authenticated:
+#         profile = User.objects.get(id = request.user.id)
+#         horse_owner = HorseOwner.objects.get(user_id=profile)
+#         return render(request, 'dashboard.html',{'user' : horse_owner})
+#     else:
+#         return HttpResponseRedirect('/login')
+
+
+@require_http_methods(["GET", "POST"])
 def signup(request):
-    #if user is authenticated go to dashboard
-    if request.user.is_authenticated:
-        return redirect('/dashboard')
-    else:
-        if request.method == 'POST':
-            form = HorseOwnerSignUpForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                user = form.save()
-                user.refresh_from_db()
-                user.save()
-                horse_owner = HorseOwner(user_id=user, first_name = data.get('first_name'), last_name = data.get('last_name'))
-                horse_owner.save()
-                current_site = get_current_site(request)
-                message = render_to_string('acc_active_email.html', {
-                    'user':user,
-                    'domain':current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
-                    'token': account_activation_token.make_token(user),
-                })
+    if request.method == 'POST':
+        form = HorseOwnerSignUpForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = form.save()
+            user.refresh_from_db()
 
-                mail_subject = 'Activate your EBARQ account.'
-                to_email = form.cleaned_data.get('email')
-                email = EmailMessage(mail_subject, message, to=[to_email])
-                email.send()
-                return HttpResponse('Please confirm your email address to complete the registration')
+            ###############################################################
+            # verification commented out for testing purposes
+            ###############################################################
+            # user.is_active = False
+            user.save()
+            horse_owner = HorseOwner(user_id=user, first_name=data.get('first_name'), last_name=data.get('last_name'))
+            horse_owner.save()
+            ###############################################################
+            # verification commented out for testing purposes
+            ###############################################################
+            # current_site = get_current_site(request)
+            # message = render_to_string('acc_active_email.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
+            #     'token': account_activation_token.make_token(user),
+            # })
+            # mail_subject = 'Activate your EBARQ account.'
+            # to_email = form.cleaned_data.get('email')
+            # email = EmailMessage(mail_subject, message, to=[to_email])
+            # email.send()
+            # return HttpResponse('Please confirm your email address to complete the registration')
 
-        form = HorseOwnerSignUpForm()
-        return render(request, 'signup.html', {'form': form})
 
-def dashboard(request):
-    if request.user.is_authenticated:
-        profile = User.objects.get(id = request.user.id)
-        horse_owner = HorseOwner.objects.get(user_id=profile)
-        return render(request, 'dashboard.html',{'user' : horse_owner})
-    else:
-        return HttpResponseRedirect('/login')
+            login(request, user)
+            # return render(request, 'dashboard.html')
+            return redirect('/dashboard')
+        else:
+            return render(request, 'signup.html', {'form': form})
+
+    form = HorseOwnerSignUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 def activate(request, uidb64, token):
     try:
