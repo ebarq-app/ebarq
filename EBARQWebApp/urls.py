@@ -22,5 +22,4 @@ urlpatterns = [
     url(r'^userprofile/',views.userprofile, name='userprofile'),
     url(r'^addperformance/',views.addperformance, name='addperformance'),
     url(r'^addreminder/',views.addreminder, name='addreminder'),
-    url(r'^horseReminders/',views.horseReminders, name='horseReminders'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
