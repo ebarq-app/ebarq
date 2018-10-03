@@ -20,7 +20,6 @@ urlpatterns = [
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^ebarqdashboard/',views.ebarqdashboard, name='ebarqdashboard'),
     url(r'^userprofile/',views.userprofile, name='userprofile'),
-    url(r'^horse_inDepth/',views.horse_inDepth, name='horse_inDepth'),
     url(r'^addperformance/',views.addperformance, name='addperformance'),
     url(r'^addreminder/',views.addreminder, name='addreminder'),
     url(r'^horseReminders/',views.horseReminders, name='horseReminders'),
