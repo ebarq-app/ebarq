@@ -87,7 +87,6 @@ def login_view(request):
 #         return HttpResponseRedirect('/login')
 
 
-@require_http_methods(["GET", "POST"])
 def signup(request):
     if request.method == 'POST':
         form = HorseOwnerSignUpForm(request.POST)
