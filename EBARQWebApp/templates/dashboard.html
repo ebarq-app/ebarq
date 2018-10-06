@@ -14,7 +14,7 @@
         {% for horse in horses %}
         <div class="col-md-4 col-sm-4"></div>
         <div class="col-md-6 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+          <a href="{% url 'horse_inDepth' horse_id=horse.pk %}" class="probootstrap-hover-overlay">
             <img src= {{ horse.whorl.url }} class="horse-photo" alt = "img">
             <div class="probootstrap-text-overlay">
               <h3>Name: {{horse.name}}</h3>

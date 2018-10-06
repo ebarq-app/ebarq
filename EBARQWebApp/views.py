@@ -21,6 +21,12 @@ from django.views.decorators.http import require_http_methods
 def index(request):
     return redirect('login')
 
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('/login')
+    else:
+        return redirect('/login')
 
 @require_http_methods(["GET", "POST"])
 def login_view(request):
@@ -45,7 +51,10 @@ def login_view(request):
             return render(request, 'login.html', {'error_message': "Sorry, you've entered incorrect username/password"})
 
     else:
-        return render(request, 'login.html')
+        if request.user.is_authenticated:
+            return redirect('/dashboard')
+        else:
+            return render(request, 'login.html')
 
     # We need this section for later on just commenting it out for now for convenience
     # elif request.method == 'GET':

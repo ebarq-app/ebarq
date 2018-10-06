@@ -49,11 +49,17 @@ class HorseSignupForm(forms.ModelForm):
         widgets = {
                'name': forms.TextInput(attrs={'class': 'form-control'}),
                'age': forms.TextInput(attrs={'class': 'form-control'}),
-               'gender': forms.TextInput(attrs={'class': 'form-control'}),
+            #    'gender': forms.TextInput(attrs={'class': 'form-control'}),
                'date_of_birth':  DateInput(attrs={'type': 'date'}),
                'weight': forms.TextInput(attrs={'class': 'form-control'}),
                'height': forms.TextInput(attrs={'class': 'form-control'}),
         }
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date > datetime.date.today():
+            raise forms.ValidationError("The date cannot be in the future!")
+        return date
+
 
 class QuestionForm(forms.ModelForm):
     question = forms.CharField(max_length=100)

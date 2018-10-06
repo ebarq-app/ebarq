@@ -12,6 +12,16 @@
     top: 0;
 
 }
+.signupheader {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 220px;
+    max-height: 75px;
+    width: 100%;
+    z-index: 0;
+    background-color: #095e0b;
+    top: 0;
+}
 
 
 .headerstyle {

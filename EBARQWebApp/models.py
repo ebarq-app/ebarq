@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class HorseOwner(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE) # Shouldn't this be One-to-One (one user has one user_id)
@@ -17,6 +18,10 @@ class HorseOwner(models.Model):
         return self.name
 
 class Horse(models.Model):
+    CHOICES = (
+    ('male', 'male'),
+    ('female', 'female')
+    )
     horse_owner = models.ForeignKey(HorseOwner, on_delete=models.CASCADE) # An owner can have multiple horses
     #horse_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     whorl = models.ImageField(upload_to='')
@@ -26,10 +31,10 @@ class Horse(models.Model):
     # Horse has these details
     name = models.CharField(max_length=50)
     age = models.IntegerField()
-    gender = models.CharField(max_length=6)
+    gender = models.CharField(max_length=6, choices = CHOICES, default = 'male')
     date_of_birth = models.DateField()
-    weight = models.IntegerField()
-    height = models.IntegerField()
+    weight = models.IntegerField(validators= [MaxValueValidator(1700), MinValueValidator(150)])
+    height = models.IntegerField(validators= [MaxValueValidator(250), MinValueValidator(50)])
 
     def __str__(self):
         # Represent the Horse with a String, uniquely with the horse_id for admin site

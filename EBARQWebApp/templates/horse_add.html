@@ -23,6 +23,9 @@
             <label> {{ field.label_tag }} </label>
             <div>  {{ field }} </div>
           </div>
+          {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+          {% endfor %}
           {% endfor %}
          </div>
         <button type="submit" class="addhorsebutton">Horse Sign up</button>

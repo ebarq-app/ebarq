@@ -1,0 +1,24 @@
+if (this.variables.target) {
+    let pos = this.variables.target;
+    if (this.getDistanceToPoint(pos.x, pos.y, pos.z) > 0.5){
+        this.turnToPoint(pos.x, pos.y, pos.z, 0.25);
+        this.setForwardSpeed(5);
+        this.playAnimation('walk', true);
+
+    }
+    else{
+        this.playAnimation('idle', true);
+    }
+}
+
+
+this.scene.camera.moveTo(30,15,50);
+this.scene.camera.lookAt(35,0,35);
+
+let act = this.scene.getActorAt(x,y);
+if (act == null){
+    let hit = this.scene.getPositionAt(x,y);
+    if (hit){
+        this.variables.target= hit;
+    }
+}
