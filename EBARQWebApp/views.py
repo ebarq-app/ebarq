@@ -202,16 +202,82 @@ def ebarqdashboard(request):
         return render(request, 'ebarqdashboard.html', {'horses': horse})
 
 
-def addperformance(request):
-    return render(request, 'addRecord.html')
+def addperformance(request, horse_id):
+    if request.user.is_authenticated:
+        horse = Horse.objects.get(id=horse_id)
+        if request.method == "POST":
+            form = AddPerformanceForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                event = data.get('event')
+                time = data.get('time')
+                duration = data.get('duration')
+                print(duration)
+
+                notes = data.get('notes')
+                p = AddPerformance(horse = horse, event = event, time = time, duration = duration, additional = notes )
+                p.save()
+                return redirect('/dashboard', {'message': 'Performance Successfully Created!'})
+            else:
+                return render(request, 'addRecord.html', {'horse': horse, 'form':form})
+        else:
+            form = AddPerformanceForm()
+            return render(request, 'addRecord.html', {'horse': horse, 'form':form})
+
+    return redirect('/login')
+
+    # return render(request, 'addRecord.html')
 
 
-def addreminder(request):
-    return render(request, 'addReminder.html')
+def addreminder(request, horse_id):
+    if request.user.is_authenticated:
+        horse = Horse.objects.get(id=horse_id)
+        if request.method == "POST":
+            form = AddReminderForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                date = data.get('date')
+                time = data.get('time')
+                event = data.get('event')
+                notes = data.get('notes')
+                r = AddReminder(horse = horse, date = date, time = time, event = event, notes = notes )
+                r.save()
+                return redirect('/dashboard', {'message': 'Horse Successfully Created!'})
+            else:
+                return render(request, 'addReminder.html', {'horse': horse, 'form':form})
+        else:
+            form = AddReminderForm()
+            return render(request, 'addReminder.html', {'horse': horse, 'form':form})
+
+    return redirect('/login')
+
+
+    # return render(request, 'addReminder.html')
 
 
 def horseReminders(request):
-    return render(request, 'horseReminders.html')
+    if request.user.is_authenticated:
+        profile = User.objects.get(id=request.user.id)
+        horse_owner = HorseOwner.objects.get(user_id=profile)
+        horses = Horse.objects.filter(horse_owner=horse_owner)
+
+        reminders = []
+        performance = []
+        for h in horses:
+            r = AddReminder.objects.filter(horse=h)
+            p = AddPerformance.objects.filter(horse=h)
+            reminders.append(r)
+            performance.append(p)
+
+        print(len(reminders))
+        print(reminders[0])
+        print(len(performance))
+
+        return render(request, 'horseReminders.html', {'horses':horses, 'user':horse_owner})
+    else:
+        return redirect('/login')
+
+    # return render(request, 'horseReminders.html')
 
 
 def userprofile(request):

@@ -1,0 +1,189 @@
+.logo {
+    float: left;
+    color: rgb(171, 40, 40);
+    padding-left: 20px;
+    font-size: 30px;
+    display: block;
+    font-weight: 900;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+/*header*/
+.container {
+
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: 0;
+
+}
+
+.probootstrap-logo {
+    padding-left: 0;
+    z-index: 10;
+}
+
+.logbook-logo {
+    height: auto;
+    width: auto;
+    max-width: 200px;
+    max-height: 150px;
+    padding-left: 50px;
+}
+
+.ebarq-logo {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
+    left: 0;
+    padding-left: 0;
+    position: absolute;
+    z-index: 10;
+}
+
+.btn.btn-primary {
+
+    border: 2px solid #266dac;
+    background: #266dac;
+    color: #fff;
+
+}
+
+/* dashboard-page */
+.probootstrap-gutter10 > div[class*="col-"] {
+
+    position: relative;
+    margin-top: 100px;
+
+}
+
+.profile-photo {
+
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.horse-photo {
+    position: absolute;
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+/* userprofilepage */
+.user-image {
+    margin-top: 100px;
+    padding-top: 100px;
+    padding-left: 150px;
+}
+
+.user-profile {
+    padding-top: 100px;
+    padding-left: 150px;
+}
+
+.photobutton {
+
+    background-color: #266dac;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+.editprofilebut {
+
+    background-color: #266dac;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 25px;
+
+}
+
+/* addrecordpage */
+.addrecord {
+
+    margin-top: 100px;
+    margin-left: 150px;
+
+}
+
+/* horsedetailpage */
+.addbutton {
+
+    background-color: #266dac;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 40px;
+    margin-left: 20px;
+    font-size: 20px;
+
+}
+
+/* horseprofilepage */
+.addhorsebutton {
+    background-color: #266dac;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+}
+.horseinfo {
+    border: 2px black;
+}
+
+.form-group {
+    z-index: 24;
+}
+
+.col-md-4 {
+    z-index: 24;
+}
+
+/* add horse page*/
+.horse-create {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-left: 150px;
+}
+
+.probootstrap-form.probootstrap-form-box {
+
+    background: #fff;
+    padding: 80px;
+    -webkit-box-shadow: 18px 17px 104px -24px rgba(0, 0, 0, .1);
+    box-shadow: 18px 17px 104px -24px rgba(0, 0, 0, .1);
+
+}
+
+.graph-area {
+    /* margin-top: 80px; */
+    padding-top: 100px;
+    padding-left: 250px;
+}
+
+/* Your custom css code goes here */

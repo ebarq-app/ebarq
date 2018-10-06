@@ -53,7 +53,7 @@ class AddPerformance(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
 
     time = models.TimeField()
-    type = models.CharField(max_length=100)
+    event = models.CharField(max_length=100)
     duration = models.IntegerField()
     additional = models.CharField(max_length=250)
 

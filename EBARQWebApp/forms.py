@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from EBARQWebApp.models import *
 from django.forms import ModelForm
-from django.forms.widgets import DateInput
+from django.forms.widgets import DateInput, TimeInput
 
 class HorseOwnerSignUpForm(UserCreationForm):
     forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class' : 'form-control'}))
@@ -73,21 +73,25 @@ class QuestionForm(forms.ModelForm):
         fields = ('question','answer')
 
 class AddPerformanceForm(forms.ModelForm):
-    time = forms.TimeField()
-    type = forms.CharField(max_length=100)
-    duration = forms.IntegerField()
-    additional = forms.CharField(max_length=250)
+    notes = forms.CharField(widget = forms.Textarea)
 
     class Meta:
         model = AddPerformance
-        fields = ('time','type','duration','additional')
+        fields = ('event','time','duration','notes')
+        widgets = {
+            'time': TimeInput(attrs={'type': 'time'}),
+            'event': forms.TextInput(attrs={'class': 'form-control'}),
+            'duration': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 class AddReminderForm(forms.ModelForm):
-    event = forms.CharField(max_length=100)
-    time = forms.TimeField()
-    date = forms.DateField()
-    notes = forms.CharField(max_length=250)
+    notes = forms.CharField(widget = forms.Textarea)
 
     class Meta:
         model = AddReminder
         fields = ('event','time','date','notes')
+        widgets = {
+               'event': forms.TextInput(attrs={'class': 'form-control'}),
+               'time': TimeInput(attrs={'type': 'time'}),
+               'date': DateInput(attrs={'type': 'date'}),
+        }
