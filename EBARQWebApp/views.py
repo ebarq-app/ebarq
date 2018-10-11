@@ -44,6 +44,11 @@ def login_view(request):
             # We have found our user (Login Success!)
             login(request, user)
             # return render(request, 'dashboard.html')
+            profile = User.objects.get(id=request.user.id)
+            horse_owner = HorseOwner.objects.get(user_id=profile)
+            horse = Horse.objects.filter(horse_owner=horse_owner)
+            if not horse:
+                return redirect('/horse_add')
             return redirect('/dashboard')
 
         else:
@@ -78,7 +83,7 @@ def signup(request):
             ###############################################################
             # user.is_active = False
             user.save()
-            horse_owner = HorseOwner(user_id=user, first_name=data.get('first_name'), last_name=data.get('last_name'))
+            horse_owner = HorseOwner(user_id=user, first_name=data.get('first_name'), last_name=data.get('last_name'), contact_number=data.get('contact_number'))
             horse_owner.save()
             ###############################################################
             # verification commented out for testing purposes
@@ -99,7 +104,7 @@ def signup(request):
 
             login(request, user)
             # return render(request, 'dashboard.html')
-            return redirect('/dashboard')
+            return redirect('/horse_add')
         else:
             return render(request, 'signup.html', {'form': form})
 
@@ -112,6 +117,8 @@ def dashboard(request):
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
+        if not horse:
+            return redirect('/horse_add')
         return render(request, 'dashboard.html', {'user': horse_owner, 'horses': horse})
     else:
         return HttpResponseRedirect('/login')
@@ -199,6 +206,8 @@ def ebarqdashboard(request):
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
+        if not horse:
+            return redirect('/horse_add')
         return render(request, 'ebarqdashboard.html', {'horses': horse})
 
 
@@ -260,6 +269,8 @@ def horseReminders(request):
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horses = Horse.objects.filter(horse_owner=horse_owner)
+        if not horses:
+            return redirect('/horse_add')
 
         reminders = []
         performance = []
@@ -281,7 +292,10 @@ def horseReminders(request):
 
 
 def userprofile(request):
-    return render(request, 'userprofile.html')
+    if request.user.is_authenticated:
+        profile = User.objects.get(id=request.user.id)
+        horse_owner = HorseOwner.objects.get(user_id=profile)
+        return render(request, 'userprofile.html',{'owner':horse_owner,'profile':profile})
 
 
 def editprofile(request):
@@ -295,14 +309,19 @@ def horseprofile(request):
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
+        if not horse:
+            return redirect('/horse_add')
         return render(request, 'horseProfile.html', {'horses': horse})
 
 
 def horse_inDepth(request, horse_id):
     # template_name = 'horse_inDepth.html'
     if request.user.is_authenticated:
-        horse = Horse.objects.filter(id=horse_id)
-        return render(request, 'horse_inDepth.html', {'horse': horse})
+        now = timezone.now()
+        horse = Horse.objects.get(id = horse_id)
+        reminders = AddReminder.objects.filter(horse = horse).order_by('date')[:5]
+        performances = AddPerformance.objects.filter(horse = horse)
+        return render(request, 'horse_inDepth.html', {'horse': horse, 'reminders':reminders, 'performances': performances})
 
 
 def setting(request):

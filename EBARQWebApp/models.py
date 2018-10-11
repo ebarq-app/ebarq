@@ -6,13 +6,18 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 
 class HorseOwner(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE) # Shouldn't this be One-to-One (one user has one user_id)
     # User must have a first name, last name is not required (trust me I know a guy)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    display_image = models.ImageField(upload_to='', default='user.png')
+
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{10}$',
+                                 message="Phone number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
+    contact_number = models.CharField(validators=[phone_regex], max_length=10, blank=True,default="0000000000")  # validators should be a list
 
     def __str__(self):
         return self.name
