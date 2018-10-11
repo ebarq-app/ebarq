@@ -3,36 +3,38 @@
 {% load staticfiles %}
 
 
-  <!-- BEGIN: Content -->
-  <div class="row probootstrap-gutter60 mb50">
+<!-- BEGIN: Content -->
+<div class="row probootstrap-gutter60 mb50">
     <div class="col-md-4"></div>
     <div class="col-md-4 user-image">
-      <div class="col-md-12 text-center section-heading">
-        <h2>Horse Creation</h2>
-      </div>
-      {% if message %}
-      <div style="background-color:lightblue">
-         <p>{{ message }}</p>
-      </div>
-      {% endif %}
-      <form method="post" enctype="multipart/form-data" class="probootstrap-form horseaddbox">
-      {% csrf_token %}
-        <div class="form-group">
-           {% for field in form %}
-           <div class="form-group">
-            <label> {{ field.label_tag }} </label>
-            <div>  {{ field }} </div>
-          </div>
-          {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-          {% endfor %}
-          {% endfor %}
-         </div>
-        <button type="submit" class="addhorsebutton">Horse Sign up</button>
+        <div class="col-md-12 text-center section-heading">
+            <h2>Horse Creation</h2>
+        </div>
+        {% if message %}
+        <div style="background-color:lightblue">
+            <p>{{ message }}</p>
+        </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data" class="probootstrap-form horseaddbox">
+            {% csrf_token %}
+            <div class="form-group">
+                {% for field in form %}
+                <div class="form-group">
+                    <label> {{ field.label_tag }} </label>
+                    <div> {{ field }}</div>
+                </div>
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            <button type="submit" class="addhorsebutton">Horse Sign up</button>
+        </form>
     </div>
-  </div>
 
-  <!-- END: Content -->
+</div>
+
+<!-- END: Content -->
 
 
 {% endblock %}

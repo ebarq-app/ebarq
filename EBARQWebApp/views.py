@@ -118,7 +118,7 @@ def dashboard(request):
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
         if not horse:
-            return redirect('/horse_add')
+            return redirect('/horse_add_new')
         return render(request, 'dashboard.html', {'user': horse_owner, 'horses': horse})
     else:
         return HttpResponseRedirect('/login')
@@ -169,8 +169,8 @@ def horse_add_view(request):
         form = HorseSignupForm()
         return render(request, 'horse_add.html', {'form': form})
 
-
-def horse_add_view_new(request):
+@require_http_methods(["GET", "POST"])
+def horse_add_new(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = HorseSignupForm(request.POST, request.FILES)
@@ -192,13 +192,11 @@ def horse_add_view_new(request):
 
                 h.save()
                 return redirect('/dashboard', {'message': 'Horse Successfully Created!'})
-            # Redirect to ebarq
             else:
                 form = HorseSignupForm()
-                return redirect('/horse_add',
-                                {'message': 'One or more fields invalid, please correct these fields'})
+                return redirect('/horse_add_new', {'message': 'One or more fields invalid, please correct these fields'})
         form = HorseSignupForm()
-        return render(request, 'horse_add.html', {'form': form})
+        return render(request, 'horse_add_new.html', {'form': form})
 
 
 def ebarqdashboard(request):

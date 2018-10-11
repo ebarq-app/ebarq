@@ -1,63 +1,40 @@
-<!DOCTYPE html>
-{% extends "header.html" %}
+{% extends "headerNoNav.html" %}
 {% block content %}
 {% load staticfiles %}
-
-<!-- START: header -->
-
-<div class="probootstrap-loader"></div>
-
-<header role="banner" class="probootstrap-header">
-    <div class="container">
-        <img src="{% static 'IMAGES/StandardEBARQLOGO2.png' %}" class="ebarq-logo">
-    </div>
-</header>
-
-
-<header role="banner" class="probootstrap-header">
-    <div class="container">
-        <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
-        <div class="mobile-menu-overlay"></div>
-    </div>
-</header>
-<!-- END: header -->
 
 
 <!-- BEGIN: Content -->
 <div class="row probootstrap-gutter60 mb50">
     <div class="col-md-4"></div>
-    <div class="col-md-4 horse-create">
-        {% block content %}
+    <div class="col-md-4 user-image">
         <div class="col-md-12 text-center section-heading">
             <h2>Horse Creation</h2>
         </div>
-        <div class="row">
-            <form method="post" class="probootstrap-form horseaddbox">
-                {% if message %}
-                <div style="background-color:lightblue">
-                    <p>{{ message }}</p>
-                </div>
-                {% endif %}
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {% for field in form %}
-                        <div class="form-group">
-                            <label> {{ field.label_tag }} </label>
-                            <div> {{ field }}</div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="addhorsebutton">Horse Sign up</button>
-                    </div>
-                </form>
-                {% endblock %}
-            </form>
+        {% if message %}
+        <div style="background-color:lightblue">
+            <p>{{ message }}</p>
         </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data" class="probootstrap-form horseaddbox">
+            {% csrf_token %}
+            <div class="form-group">
+                {% for field in form %}
+                <div class="form-group">
+                    <label> {{ field.label_tag }} </label>
+                    <div> {{ field }}</div>
+                </div>
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            <button type="submit" class="addhorsebutton">Horse Sign up</button>
+        </form>
     </div>
+
 </div>
 
-    <!-- END: Content -->
+<!-- END: Content -->
 
-    {% endblock %}
+
+{% endblock %}

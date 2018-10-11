@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ebarq</title>
+    <meta name="description" content="ebarq">
+    <meta name="keywords" content="ebarq">
+
+    {% load staticfiles %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/custom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/headerlogbook.css' %}">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'CSS/headerebarq2.css' %}">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles-merged.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/sidebar.css' %}">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+   <div class="probootstrap-loader"></div>
+
+   <header role="banner" class="probootstrap-header">
+       <div class="bannerbuffer">
+           <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
+       </div>
+   </header>
+{% block content %}
+{% endblock %}
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+</div>
+</body>
+</html>
+<script src="{% static 'js/scripts.min.js' %}"></script>
+<script src="{% static 'js/main.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
