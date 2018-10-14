@@ -6,4 +6,5 @@
 #__Py_cache__
 EBARQ/__pycache__/*
 EBARQWebApp/__pycache__/*
+EBARQWebApp/migrations/__pycache__/*
 db.sqlite3

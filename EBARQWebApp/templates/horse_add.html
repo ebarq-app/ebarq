@@ -15,7 +15,7 @@
             <p>{{ message }}</p>
         </div>
         {% endif %}
-        <form method="post" enctype="multipart/form-data" class="probootstrap-form horseaddbox">
+        <form method="post" enctype="multipart/form-data" class="probootstrap-form">
             {% csrf_token %}
             <div class="form-group">
                 {% for field in form %}

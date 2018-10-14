@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08a74e91-a6b1-4076-9a70-13edb05b2840" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EBARQWebApp/templates/horse_add_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/EBARQWebApp/templates/horse_add_new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EBARQWebApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EBARQWebApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EBARQWebApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EBARQWebApp/views.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -66,31 +64,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="572" />
-          <entry key="html" value="971" />
-          <entry key="py" value="1095" />
+          <entry key="css" value="604" />
+          <entry key="html" value="1114" />
+          <entry key="py" value="1624" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="572" />
-          <entry key="HTML" value="971" />
-          <entry key="Python" value="1095" />
+          <entry key="CSS" value="604" />
+          <entry key="HTML" value="1114" />
+          <entry key="Python" value="1624" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="22" />
-          <entry key="html" value="50" />
-          <entry key="py" value="10" />
+          <entry key="css" value="29" />
+          <entry key="html" value="55" />
+          <entry key="py" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="22" />
-          <entry key="HTML" value="50" />
+          <entry key="CSS" value="29" />
+          <entry key="HTML" value="55" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="9" />
+          <entry key="Python" value="13" />
         </counts>
       </usages-collector>
     </session>
@@ -101,70 +99,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/setting.html">
+        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+            <state relative-caret-position="210">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html">
+        <entry file="file://$PROJECT_DIR$/EBARQWebApp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state relative-caret-position="-106">
+              <caret line="15" column="65" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="65" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerNoNav.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerLogbookNoNav.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="6" selection-end-line="40" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/horse_add_new.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" selection-start-column="23" selection-end-column="23" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EBARQWebApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="15">
+              <caret line="310" column="33" lean-forward="true" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="33" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -173,31 +132,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/signup.html">
+        <entry file="file://$PROJECT_DIR$/EBARQWebApp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+            <state relative-caret-position="1556">
+              <caret line="139" column="104" lean-forward="true" selection-start-line="139" selection-start-column="104" selection-end-line="139" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/models.py">
+        <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+            <state relative-caret-position="159">
+              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EBARQWebApp/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -223,6 +173,11 @@
       <find>detail</find>
       <find>horse</find>
       <find>if u</find>
+      <find>userpof</find>
+      <find>horse_add</find>
+      <find>horseadd</find>
+      <find>horseaddbox</find>
+      <find>user</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,33 +186,33 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/login.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/addRecord.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/style.css" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/ebarqdashboard.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/signup.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/addReminder.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/horseDetail.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/header.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/custom.css" />
         <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/sidebar.css" />
         <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/headerebarq2.css" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerLogbook.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/headerlogbook.css" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/horseProfile.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/horse_inDepth.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/setting.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/userprofile.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/models.py" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/urls.py" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/horse_add_new.html" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/login.html" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/header.html" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/static/CSS/headerlogbook.css" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerNoNav.html" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerLogbookNoNav.html" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerLogbook.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/forms.py" />
         <option value="$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/urls.py" />
+        <option value="$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html" />
         <option value="$PROJECT_DIR$/EBARQWebApp/views.py" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/horse_add_new.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerLogbookNoNav.html" />
-        <option value="$PROJECT_DIR$/EBARQWebApp/templates/headerNoNav.html" />
       </list>
     </option>
   </component>
@@ -302,6 +257,13 @@
               <item name="EBARQ" type="462c0819:PsiDirectoryNode" />
               <item name="EBARQWebApp" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EBARQ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EBARQ" type="462c0819:PsiDirectoryNode" />
+              <item name="EBARQWebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="CSS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EBARQ" type="b2602c69:ProjectViewProjectNode" />
@@ -365,11 +327,11 @@
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49891067" visible="true" weight="0.2657512" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49891067" visible="true" weight="0.2657512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50108933" side_tool="true" weight="0.25767368" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.329927" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.329927" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -445,13 +407,6 @@
         <state relative-caret-position="-256" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-395">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/ebarqdashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -464,41 +419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="50" selection-start-line="50" selection-end-line="50" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="175" column="6" selection-start-line="175" selection-start-column="6" selection-end-line="175" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/headerebarq2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerLogbook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="25" column="33" selection-start-line="25" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/headerlogbook.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/sidebar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -519,13 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/userprofile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -540,61 +453,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="6" selection-end-line="40" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="109" column="21" lean-forward="true" selection-start-line="109" selection-start-column="21" selection-end-line="109" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
           <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -608,17 +470,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerLogbook.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerLogbookNoNav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        <state relative-caret-position="405">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/headerNoNav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        <state relative-caret-position="372">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/sidebar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1895">
+          <caret line="129" column="17" lean-forward="true" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/headerebarq2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/static/CSS/headerlogbook.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="116" column="36" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/editprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/templates/horse_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1556">
+          <caret line="139" column="104" lean-forward="true" selection-start-line="139" selection-start-column="104" selection-end-line="139" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-106">
+          <caret line="15" column="65" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EBARQWebApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="310" column="33" lean-forward="true" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

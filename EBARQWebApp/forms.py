@@ -77,6 +77,32 @@ class QuestionForm(forms.ModelForm):
         fields = ('question', 'answer')
 
 
+class AddReminderForm(forms.ModelForm):
+    notes = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = AddReminder
+        fields = ('event', 'time', 'date', 'notes')
+        widgets = {
+            'event': forms.TextInput(attrs={'class': 'form-control'}),
+            'time': TimeInput(attrs={'type': 'time'}),
+            'date': DateInput(attrs={'type': 'date'}),
+        }
+class EditReminderForm(forms.ModelForm):
+    notes = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = AddReminder
+        fields = ('event', 'time', 'date', 'notes')
+        widgets = {
+            'event': forms.TextInput(attrs={'class': 'form-control'}),
+            'time': TimeInput(attrs={'type': 'time'}),
+            'date': DateInput(attrs={'type': 'date'}),
+            }
+
+    def __init__(self, *args, **kwargs):
+        super(EditReminderForm, self).__init__(*args, **kwargs)
+
 class AddPerformanceForm(forms.ModelForm):
     notes = forms.CharField(widget=forms.Textarea)
 
@@ -90,26 +116,30 @@ class AddPerformanceForm(forms.ModelForm):
         }
 
 
-class AddReminderForm(forms.ModelForm):
+class EditPerformanceForm(forms.ModelForm):
     notes = forms.CharField(widget=forms.Textarea)
 
     class Meta:
-        model = AddReminder
-        fields = ('event', 'time', 'date', 'notes')
+        model = AddPerformance
+        fields = ('event', 'time', 'duration', 'notes')
         widgets = {
-            'event': forms.TextInput(attrs={'class': 'form-control'}),
             'time': TimeInput(attrs={'type': 'time'}),
-            'date': DateInput(attrs={'type': 'date'}),
+            'event': forms.TextInput(attrs={'class': 'form-control'}),
+            'duration': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(EditPerformanceForm, self).__init__(*args, **kwargs)
 
-# class UpdateUserForm(forms.ModelForm):
-#     class Meta:
-#         model = HorseOwner, User
-#         fields = ('first_name', 'last_name', 'email', 'contact_number')
-#         widgets = {
-#             'first_name': forms.CharField(max_length=50),
-#             'last_name': forms.CharField(max_length=50),
-#             'contact_number': forms.CharField(max_length=10),
-#             'email': forms.EmailField(max_length=254, required=True)
-#         }
+
+
+
+class UpdateUserForm(forms.ModelForm):
+    forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # email = forms.EmailField(max_length=254, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    contact_number = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = HorseOwner
+        fields = ('first_name', 'last_name', 'contact_number')

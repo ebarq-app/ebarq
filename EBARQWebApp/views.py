@@ -205,7 +205,7 @@ def ebarqdashboard(request):
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horse = Horse.objects.filter(horse_owner=horse_owner)
         if not horse:
-            return redirect('/horse_add')
+            return redirect('/horse_add_new')
         return render(request, 'ebarqdashboard.html', {'horses': horse})
 
 
@@ -219,12 +219,10 @@ def addperformance(request, horse_id):
                 event = data.get('event')
                 time = data.get('time')
                 duration = data.get('duration')
-                print(duration)
-
                 notes = data.get('notes')
                 p = AddPerformance(horse = horse, event = event, time = time, duration = duration, additional = notes )
                 p.save()
-                return redirect('/dashboard', {'message': 'Performance Successfully Created!'})
+                return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
             else:
                 return render(request, 'addRecord.html', {'horse': horse, 'form':form})
         else:
@@ -249,7 +247,7 @@ def addreminder(request, horse_id):
                 notes = data.get('notes')
                 r = AddReminder(horse = horse, date = date, time = time, event = event, notes = notes )
                 r.save()
-                return redirect('/dashboard', {'message': 'Horse Successfully Created!'})
+                return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
             else:
                 return render(request, 'addReminder.html', {'horse': horse, 'form':form})
         else:
@@ -268,7 +266,7 @@ def horseReminders(request):
         horse_owner = HorseOwner.objects.get(user_id=profile)
         horses = Horse.objects.filter(horse_owner=horse_owner)
         if not horses:
-            return redirect('/horse_add')
+            return redirect('/horse_add_new')
 
         reminders = []
         performance = []
@@ -297,7 +295,36 @@ def userprofile(request):
 
 
 def editprofile(request):
-    return render(request, 'editprofile.html')
+    if request.user.is_authenticated:
+        profile = User.objects.get(id=request.user.id)
+        horse_owner = HorseOwner.objects.get(user_id=profile)
+        if request.method == 'POST':
+            form = UpdateUserForm(request.POST, request.FILES)
+            if form.is_valid():
+                data = form.cleaned_data
+                first_name = data.get('first_name')
+                last_name = data.get('last_name')
+                # email = data.get('email')
+                contact_number = data.get('contact_number')
+
+
+                if(len(first_name)>1):
+                    horse_owner.first_name = first_name
+                if(len(last_name)>1):
+                    horse_owner.last_name = last_name
+                # if(email.size()>1):
+                #     horse_owner.email = email
+                if(len(contact_number)>9):
+                    horse_owner.contact_number = contact_number
+
+
+                horse_owner.save()
+                return redirect('/userprofile', {'message': 'Horse Successfully Created!'})
+            else:
+                form = UpdateUserForm()
+                return redirect('/editprofile', {'message': 'One or more fields invalid, please correct these fields'})
+        form = UpdateUserForm()
+        return render(request, 'editprofile.html',{'form':form ,})
 
 
 def horseprofile(request):
@@ -321,7 +348,59 @@ def horse_inDepth(request, horse_id):
         performances = AddPerformance.objects.filter(horse = horse)
         return render(request, 'horse_inDepth.html', {'horse': horse, 'reminders':reminders, 'performances': performances})
 
+# @require_http_methods(["DELETE"])
+def delete_reminder(request, reminder_id):
+    if request.user.is_authenticated:
+        reminder = AddReminder.objects.get(pk = reminder_id)
+        horse = Horse.objects.get(id = reminder.horse.id)
+        reminder.delete()
+        return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
+    else:
+        return redirect('/login')
 
+def edit_reminder(request, reminder_id):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            reminder = AddReminder.objects.get(pk = reminder_id)
+            horse = Horse.objects.get(id = reminder.horse.id)
+            form = EditReminderForm(request.POST, instance = reminder)
+            if form.is_valid:
+                form.save()
+                return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
+        else:
+            reminder = AddReminder.objects.get(pk =reminder_id)
+            form = EditReminderForm(instance=reminder)
+            return render(request, 'edit_reminder.html', {'form': form})
+
+    else:
+        return redirect('/login')
+
+def edit_performance(request, performance_id):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            performance = AddPerformance.objects.get(pk = performance_id)
+            horse = Horse.objects.get(id = performance.horse.id)
+            form = EditPerformanceForm(request.POST, instance = performance)
+            if form.is_valid:
+                form.save()
+                return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
+        else:
+            print (1)
+            performance = AddPerformance.objects.get(pk = performance_id)
+            form = EditPerformanceForm(instance=performance)
+            return render(request, 'edit_performance.html', {'form': form})
+
+    else:
+        return redirect('/login')
+
+def delete_perfromance(request, performance_id):
+    if request.user.is_authenticated:
+        perfromance = AddPerformance.objects.get(pk = performance_id)
+        horse = Horse.objects.get(id = perfromance.horse.id)
+        perfromance.delete()
+        return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
+    else:
+        return redirect('login')
 def setting(request):
     return render(request, 'setting.html')
 

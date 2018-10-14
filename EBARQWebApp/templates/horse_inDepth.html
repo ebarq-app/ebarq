@@ -37,21 +37,15 @@
                 <span class="meta">{{reminder.time}}  {{reminder.date}}</span>
                 <p>{{reminder.notes}}</p>
             </li>
+            <a href="{% url 'delete_reminder' reminder_id=reminder.pk %}">
+                <button type="button"><b>Delete</b></button>
+            <a href="{% url 'edit_reminder' reminder_id=reminder.pk %}">
+                <button type="button"><b>Edit</b></button>
             {%endfor%}
         </ul>
         <a href="{% url 'addreminder' horse_id=horse.pk %}">
             <button type="button" class="addbutton"><b> Add Reminder</b></button>
         </a>
-    </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-5">
-    <h3><b> Performances</b></h3>
-    {% for reminder in reminders %}
-        <h3>Name: {{reminder.event}}</b></h3>
-        <h3>Date: {{reminder.time}}</b></h3>
-        <h3>Age: {{reminder.duration}}</h3>
-        <h3>Gender: {{reminder.additional}}</h3>
-    {%endfor%}
     </div>
 
     <div class="col-md-4 mb30">
@@ -63,8 +57,13 @@
                 <span class="meta">{{performance.duration}}</span>
                 <span class="meta">{{performance.additional}}</span>
             </li>
-        </ul>
+            <a href="{% url 'delete_perfromance' performance_id=performance.pk %}">
+                <button type="button"><b>Delete</b></button>
+            <a href="{% url 'edit_performance' performance_id=performance.pk %}">
+                <button type="button"><b>Edit</b></button>
         {%endfor%}
+        </ul>
+
         <a href="{% url 'addperformance' horse_id=horse.pk  %}">
             <button type="button" class="addbutton"><b> Add Performance</b></button>
         </a>

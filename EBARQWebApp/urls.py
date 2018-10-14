@@ -20,6 +20,13 @@ urlpatterns = [
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 
+    url(r'^delete_reminder/(?P<reminder_id>[0-9]+)$', views.delete_reminder, name='delete_reminder'),
+    url(r'^delete_performance/(?P<performance_id>[0-9]+)$', views.delete_perfromance, name='delete_perfromance'),
+    url(r'^edit_reminder/(?P<reminder_id>[0-9]+)$', views.edit_reminder, name='edit_reminder'),
+    url(r'^edit_performance/(?P<performance_id>[0-9]+)$', views.edit_performance, name='edit_performance'),
+
+
+
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^ebarqdashboard/',views.ebarqdashboard, name='ebarqdashboard'),
     url(r'^userprofile/',views.userprofile, name='userprofile'),
