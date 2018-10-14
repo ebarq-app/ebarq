@@ -409,3 +409,6 @@ def setting(request):
 
 def graph(request):
     return render(request, 'ebarqgraph.html')
+
+def question(request):
+    return render(request, 'questionnaire.html')

@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^edit_performance/(?P<performance_id>[0-9]+)$', views.edit_performance, name='edit_performance'),
 
 
-
+    url(r'^question/', views.question, name='question'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^ebarqdashboard/',views.ebarqdashboard, name='ebarqdashboard'),
     url(r'^userprofile/',views.userprofile, name='userprofile'),

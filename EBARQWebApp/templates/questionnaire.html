@@ -1,5 +1,5 @@
 <!--<!DOCTYPE html>-->
-{% extends "header.html" %}
+{% extends "headerNoNav.html" %}
 {% block content %}
 {% load staticfiles %}
 
@@ -14,7 +14,7 @@
  <div class="container questionform">
     
    <div class="row">
-      <div class="col-md-3"></div>
+      <div class="col-md-2"></div>
      <div class="col-md-8">
        <form action="#" method="post">
          <div class="row">
@@ -60,11 +60,130 @@
                  </label>   
               </div>
             <hr>
+            <!-- Trainability -->
+            <label for="yesnotype" class="questionlabel">When teaching a new lesson, does [horse_id]?</label><br>
             <div class="form-group">
-              <label for="yesnotype" class="questionlabel">Radio Question</label><br>
-              <input type="radio" name="group1" value="Milk"> Milk<br>
-              <input type="radio" name="group1" value="Butter" checked> Butter<br>
-              <input type="radio" name="group1" value="Cheese"> Cheese
+              <label for="yesnotype" class="narrowlabel">Learn quickly with pressure cues</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked> Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Learn quickly when corrected</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked >Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Learn quickly when punished</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked> Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            <hr>
+            </div>
+            <!-- Rideability -->
+            <label for="yesnotype" class="questionlabel">When ridden or driven, how responsive is [horse_id] to:</label><br>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Leg pressure to go from walk to trot</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Leg pressure to go from trot to canter</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Rein tension to turn</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Seat cues for upward transitions</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Seat cues for downward transitions</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            <hr>
+            </div>
+            <label for="yesnotype" class="questionlabel">When being led or worked on the ground, how responsive is [horse_id] to:</label><br>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Voice cues to speed up</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable<br>
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Voice cues to slow down</label><br>
+              <input type="radio" name="group1" value="4"> Highly responsive
+              <input type="radio" name="group1" value="3" checked> Moderately responsive
+              <input type="radio" name="group1" value="2"> Unresponsive
+              <input type="radio" name="group1" value="0"> Not observed/ applicable
+              <hr>
+            </div>
+            <label for="yesnotype" class="questionlabel">Does [horse_id]?</label><br>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Buck, pigroot or kick out when signalled to canter</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked> Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Buck at other times (when ridden)</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked> Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            </div>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">Unseat rider when bucking, pigrooting or kicking out</label><br>
+              <input type="radio" name="group1" value="2"> Never<br>
+              <input type="radio" name="group1" value="3" checked> Rarely<br>
+              <input type="radio" name="group1" value="4"> Sometimes<br>
+              <input type="radio" name="group1" value="5"> Usually<br>
+              <input type="radio" name="group1" value="6"> Always<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
+            <hr>
+            </div>
+            <label for="yesnotype" class="questionlabel">Some horses display defensive or aggressive behaviour in certain situations.
+              Typical signs would include threatening to bite, pinning ears, tail swishing, threatening to kick or strike. The most serious signs would include actual biting, kicking or striking.
+              Check a box on the 5 point scale below to indicate your horse's recent tendency (using the previous 6 months as a guide) to show these behaviours in the following context:</label><br>
+            <div class="form-group">
+              <label for="yesnotype" class="narrowlabel">When signalled to canter under saddle/driving</label><br>
+              <input type="radio" name="group1" value="2"> 1 - No signs<br>
+              <input type="radio" name="group1" value="3" checked> 2<br>
+              <input type="radio" name="group1" value="4"> 3 - Moderate signs (ears back, tail swish, threaten to bite)	<br>
+              <input type="radio" name="group1" value="5"> 4<br>
+              <input type="radio" name="group1" value="6"> 5 - Serious signs (kick, bite, strike)<br>
+              <input type="radio" name="group1" value=" "> Not observed/ applicable
             <hr>
             </div>
             <div class="form-group">

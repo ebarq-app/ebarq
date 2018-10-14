@@ -287,5 +287,9 @@
     font-size: 20px;
     color: black;
 }
-
+.narrowlabel{
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    color: rgb(43, 41, 41);
+}
 /* Your custom css code goes here */
