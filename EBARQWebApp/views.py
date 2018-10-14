@@ -291,6 +291,7 @@ def userprofile(request):
     if request.user.is_authenticated:
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
+        print(horse_owner.display_image)
         return render(request, 'userprofile.html',{'owner':horse_owner,'profile':profile})
 
 
@@ -304,27 +305,29 @@ def editprofile(request):
                 data = form.cleaned_data
                 first_name = data.get('first_name')
                 last_name = data.get('last_name')
-                # email = data.get('email')
+                email = data.get('email')
                 contact_number = data.get('contact_number')
+                display_image = data.get('display_image')
 
 
                 if(len(first_name)>1):
                     horse_owner.first_name = first_name
                 if(len(last_name)>1):
                     horse_owner.last_name = last_name
-                # if(email.size()>1):
-                #     horse_owner.email = email
+                if(len(email)>1):
+                    horse_owner.email = email
                 if(len(contact_number)>9):
                     horse_owner.contact_number = contact_number
+                horse_owner.display_image = display_image
 
 
                 horse_owner.save()
                 return redirect('/userprofile', {'message': 'Horse Successfully Created!'})
             else:
                 form = UpdateUserForm()
-                return redirect('/editprofile', {'message': 'One or more fields invalid, please correct these fields'})
+                return redirect('/editprofile', {'message': 'One or more fields invalid, please correct these fields','form':form})
         form = UpdateUserForm()
-        return render(request, 'editprofile.html',{'form':form ,})
+        return render(request, 'editprofile.html',{'form':form})
 
 
 def horseprofile(request):

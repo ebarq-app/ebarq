@@ -136,10 +136,10 @@ class EditPerformanceForm(forms.ModelForm):
 
 class UpdateUserForm(forms.ModelForm):
     forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    # email = forms.EmailField(max_length=254, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
     contact_number = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
         model = HorseOwner
-        fields = ('first_name', 'last_name', 'contact_number')
+        fields = ('first_name', 'last_name', 'contact_number','email','display_image')
