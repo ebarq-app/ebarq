@@ -195,6 +195,8 @@ def horse_add_new(request):
                 return redirect('/horse_add_new', {'message': 'One or more fields invalid, please correct these fields'})
         form = HorseSignupForm()
         return render(request, 'horse_add_new.html', {'form': form})
+    else:
+        return redirect('/login')
 
 
 def ebarqdashboard(request):
@@ -205,6 +207,8 @@ def ebarqdashboard(request):
         if not horse:
             return redirect('/horse_add_new')
         return render(request, 'ebarqdashboard.html', {'horses': horse})
+    else:
+        return redirect('/login')
 
 
 def addperformance(request, horse_id):
@@ -291,6 +295,8 @@ def userprofile(request):
         horse_owner = HorseOwner.objects.get(user_id=profile)
         print(horse_owner.display_image)
         return render(request, 'userprofile.html',{'owner':horse_owner,'profile':profile})
+    else:
+        return redirect('/login')
 
 
 def editprofile(request):
@@ -323,6 +329,8 @@ def editprofile(request):
                 return redirect('/editprofile', {'message': 'One or more fields invalid, please correct these fields','form':form})
         form = UpdateUserForm(instance=horse_owner)
         return render(request, 'editprofile.html',{'form':form})
+    else:
+        return redirect('/login')
 
 
 def horseprofile(request):
@@ -335,6 +343,8 @@ def horseprofile(request):
         if not horse:
             return redirect('/horse_add')
         return render(request, 'horseProfile.html', {'horses': horse})
+    else:
+        return redirect('/login')
 
 
 def horse_inDepth(request, horse_id):
@@ -344,6 +354,8 @@ def horse_inDepth(request, horse_id):
         reminders = AddReminder.objects.filter(horse = horse).order_by('date')[:5]
         performances = AddPerformance.objects.filter(horse = horse)
         return render(request, 'horse_inDepth.html', {'horse': horse, 'reminders':reminders, 'performances': performances})
+    else:
+        return redirect('/login')
 
 # Delete a reminder record for a horse
 def delete_reminder(request, reminder_id):
@@ -438,6 +450,8 @@ def edit_horse(request, horse_id):
         form = EditHorseForm()
         print(horse.name,horse.weight,horse.height)
         return render(request, 'edithorse.html',{'form':form, 'horse':horse})
+    else:
+        return redirect('/login')
 
 # Delete a performance record for a horse
 def delete_perfromance(request, performance_id):
@@ -453,10 +467,19 @@ def delete_perfromance(request, performance_id):
         return redirect('login')
 
 def setting(request):
-    return render(request, 'setting.html')
+    if request.user.is_authenticated:
+        return render(request, 'setting.html')
+    else:
+        return redirect('/login')
 
 def graph(request):
-    return render(request, 'ebarqgraph.html')
+    if request.user.is_authenticated:
+        return render(request, 'ebarqgraph.html')
+    else:
+        return redirect('/login')
 
 def question(request):
-    return render(request, 'questionnaire.html')
+    if request.user.is_authenticated:
+        return render(request, 'questionnaire.html')
+    else:
+        return redirect('/login')
