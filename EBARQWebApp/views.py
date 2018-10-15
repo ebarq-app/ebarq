@@ -15,6 +15,8 @@ from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.views.decorators.http import require_http_methods
+from django.contrib import messages
+
 
 
 def index(request):
@@ -39,9 +41,6 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            ###############################################################
-            # verification commented out for testing purposes
-            ###############################################################
             if user.is_active == True:
                 # We have found our user (Login Success!)
                 login(request, user)
@@ -53,13 +52,9 @@ def login_view(request):
                 if not horse:
                     return redirect('/horse_add')
                 return redirect('/dashboard')
-
-            else:
-                # Failed login attempt - needs adding to html
-                return render(request, 'login.html', {'error_message': "Sorry, you've entered incorrect username/password"})
         else:
-            if request.user.is_authenticated:
-                return redirect('/dashboard')
+            messages.error(request,'username or password not correct')
+            return redirect('/login')
     else:
         return render(request, 'login.html')
 

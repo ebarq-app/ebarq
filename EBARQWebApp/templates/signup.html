@@ -50,7 +50,12 @@
                             <div> {{field }}</div>
                         </div>
                         {% for error in field.errors %}
-                        <p style="color: red">{{ error }}</p>
+                        <div class="alert alert-success">
+                            <a class="close" href="#" data-dismiss="alert">×</a>
+
+                            {{ error }}
+
+                        </div>
                         {% endfor %}
                         {% endfor %}
 

@@ -26,8 +26,12 @@
                 <div> {{ field }}</div>
             </div>
             {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-            {% endfor %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+
+                {{ error }}
+
+            </div>
             {% endfor %}
         </div>
         <button type="submit" class="addhorsebutton">Save Changes</button>
