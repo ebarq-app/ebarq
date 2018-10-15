@@ -18,6 +18,9 @@
                   <!-- <div class="form-group"> -->
                     <label> {{field.label_tag}} </label>
                     <div> {{field }}</div>
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
                   <!-- </div> -->
                 <!-- </div> -->
                 {% endfor %}

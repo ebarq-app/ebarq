@@ -29,7 +29,18 @@ class HorseOwnerSignUpForm(UserCreationForm):
             'password1': forms.TextInput(attrs={'class': 'form-control'}),
             'password2': forms.TextInput(attrs={'class': 'form-control'}),
         }
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError('Email addresses must be unique!')
+        return email
 
+    def clean_contact_number(self):
+        contact_number = self.cleaned_data.get('contact_number')
+        if HorseOwner.objects.filter(contact_number = contact_number).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('Phone numebr must be unique!')
+        return contact_number
 
 class HorseSignupForm(forms.ModelForm):
     # name = forms.CharField(max_length=50)
@@ -52,18 +63,16 @@ class HorseSignupForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'age': forms.TextInput(attrs={'class': 'form-control'}),
-            #    'gender': forms.TextInput(attrs={'class': 'form-control'}),
             'date_of_birth': DateInput(attrs={'type': 'date'}),
             'weight': forms.TextInput(attrs={'class': 'form-control'}),
             'height': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-    def clean_date(self):
-        date = self.cleaned_data['date']
-        if date > datetime.date.today():
+    def clean_date_of_birth(self):
+        date_of_birth = self.cleaned_data['date_of_birth']
+        if date_of_birth > datetime.date.today():
             raise forms.ValidationError("The date cannot be in the future!")
-        return date
-
+        return date_of_birth
 
 class QuestionForm(forms.ModelForm):
     question = forms.CharField(max_length=100)
@@ -88,6 +97,13 @@ class AddReminderForm(forms.ModelForm):
             'time': TimeInput(attrs={'type': 'time'}),
             'date': DateInput(attrs={'type': 'date'}),
         }
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date < datetime.date.today():
+            raise forms.ValidationError("Reminder cannot be set in the past!")
+        return date
+
 class EditReminderForm(forms.ModelForm):
     notes = forms.CharField(widget=forms.Textarea)
 
@@ -99,6 +115,12 @@ class EditReminderForm(forms.ModelForm):
             'time': TimeInput(attrs={'type': 'time'}),
             'date': DateInput(attrs={'type': 'date'}),
             }
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date < datetime.date.today():
+            raise forms.ValidationError("Reminder cannot be set in the past!")
+        return date
 
     def __init__(self, *args, **kwargs):
         super(EditReminderForm, self).__init__(*args, **kwargs)
@@ -136,10 +158,25 @@ class EditPerformanceForm(forms.ModelForm):
 
 class UpdateUserForm(forms.ModelForm):
     forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
     contact_number = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
         model = HorseOwner
-        fields = ('first_name', 'last_name', 'contact_number','email','display_image')
+        fields = ('first_name', 'last_name', 'contact_number','display_image')
+    def __init__(self, *args, **kwargs):
+        super(UpdateUserForm, self).__init__(*args, **kwargs)
+
+class EditHorseForm(forms.ModelForm):
+    whorl = forms.ImageField(required=False)
+    side_face = forms.ImageField(required=False)
+    full_side = forms.ImageField(required=False)
+
+    # Horse has these details
+    name = forms.CharField(max_length=50, required=False)
+    weight = forms.IntegerField(validators= [MaxValueValidator(1700), MinValueValidator(150)], required=False)
+    height = forms.IntegerField(validators= [MaxValueValidator(250), MinValueValidator(50)], required=False)
+
+    class Meta:
+        model = Horse
+        fields = ('name','weight','height','whorl','side_face','full_side')

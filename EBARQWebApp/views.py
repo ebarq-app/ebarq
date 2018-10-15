@@ -17,7 +17,6 @@ from django.core.mail import EmailMessage
 from django.views.decorators.http import require_http_methods
 
 
-# Create your views here.
 def index(request):
     return redirect('login')
 
@@ -29,51 +28,50 @@ def logout_view(request):
         return redirect('/login')
 
 @require_http_methods(["GET", "POST"])
+#Log user in when there is a valid input
 def login_view(request):
+    # user can only login when there is a post request i.e. when they press the login button
     if request.method == 'POST':
+        # get username and password data from input
         username = request.POST['username']
         password = request.POST['password']
+        # try authenticating the user using the entered username and password
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            print (user.is_active)
             ###############################################################
             # verification commented out for testing purposes
             ###############################################################
-            # if user.is_active == True:
-            # We have found our user (Login Success!)
-            login(request, user)
-            # return render(request, 'dashboard.html')
-            profile = User.objects.get(id=request.user.id)
-            horse_owner = HorseOwner.objects.get(user_id=profile)
-            horse = Horse.objects.filter(horse_owner=horse_owner)
-            if not horse:
-                return redirect('/horse_add')
-            return redirect('/dashboard')
+            if user.is_active == True:
+                # We have found our user (Login Success!)
+                login(request, user)
+                profile = User.objects.get(id=request.user.id)
+                horse_owner = HorseOwner.objects.get(user_id=profile)
+                horse = Horse.objects.filter(horse_owner=horse_owner)
+                # check if the user has already registered a horse
+                # User should have atleast one horse registered before site functionaltiy is availability
+                if not horse:
+                    return redirect('/horse_add')
+                return redirect('/dashboard')
 
+            else:
+                # Failed login attempt - needs adding to html
+                return render(request, 'login.html', {'error_message': "Sorry, you've entered incorrect username/password"})
         else:
-            # Failed login attempt - needs adding to html
-            return render(request, 'login.html', {'error_message': "Sorry, you've entered incorrect username/password"})
-
+            if request.user.is_authenticated:
+                return redirect('/dashboard')
     else:
-        if request.user.is_authenticated:
-            return redirect('/dashboard')
-        else:
-            return render(request, 'login.html')
-
-    # We need this section for later on just commenting it out for now for convenience
-    # elif request.method == 'GET':
-    #     if request.user.is_authenticated:
-    #         return redirect('/dashboard')
-    #     else:
-    #         return render(request, 'login.html')
-
+        return render(request, 'login.html')
 
 @require_http_methods(["GET", "POST"])
+# Register a new user for the system that is a horse owner
 def signup(request):
     if request.method == 'POST':
+        # get a form for signup from forms.py
         form = HorseOwnerSignUpForm(request.POST)
+        #check if the input in from by user is valid
         if form.is_valid():
+            # get data from form
             data = form.cleaned_data
             user = form.save()
             user.refresh_from_db()
@@ -81,49 +79,51 @@ def signup(request):
             ###############################################################
             # verification commented out for testing purposes
             ###############################################################
-            # user.is_active = False
+            user.is_active = False
             user.save()
+            # save data entered to HowseOwner table
             horse_owner = HorseOwner(user_id=user, first_name=data.get('first_name'), last_name=data.get('last_name'), contact_number=data.get('contact_number'))
             horse_owner.save()
             ###############################################################
             # verification commented out for testing purposes
             ###############################################################
-            # current_site = get_current_site(request)
-            # message = render_to_string('acc_active_email.html', {
-            #     'user': user,
-            #     'domain': current_site.domain,
-            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
-            #     'token': account_activation_token.make_token(user),
-            # })
-            # mail_subject = 'Activate your EBARQ account.'
-            # to_email = form.cleaned_data.get('email')
-            # email = EmailMessage(mail_subject, message, to=[to_email])
-            # email.send()
-            # return HttpResponse('Please confirm your email address to complete the registration')
-
-
-            login(request, user)
+            current_site = get_current_site(request)
+            message = render_to_string('acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode,
+                'token': account_activation_token.make_token(user),
+            })
+            mail_subject = 'Activate your EBARQ account.'
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
             # return render(request, 'dashboard.html')
-            return redirect('/horse_add')
+
+            # return redirect('/horse_add')
         else:
             return render(request, 'signup.html', {'form': form})
-
     form = HorseOwnerSignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-
+# the main dashboard view of a horse owner
 def dashboard(request):
+    # check for authentication
     if request.user.is_authenticated:
+        # get the data for logged in user
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
+        # get horse data of logged in user
         horse = Horse.objects.filter(horse_owner=horse_owner)
+        # if the user has no registered horse user is first asked to add a new horse
         if not horse:
             return redirect('/horse_add_new')
         return render(request, 'dashboard.html', {'user': horse_owner, 'horses': horse})
     else:
         return HttpResponseRedirect('/login')
 
-
+# Activate user when activation is linked
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -134,7 +134,6 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        # return redirect('home')
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
@@ -164,8 +163,7 @@ def horse_add_view(request):
                 h.save()
                 return redirect('/dashboard', {'message': 'Horse Successfully Created!'})
             else:
-                form = HorseSignupForm()
-                return redirect('/horse_add', {'message': 'One or more fields invalid, please correct these fields'})
+                return render(request, 'horse_add.html', {'form': form})
         form = HorseSignupForm()
         return render(request, 'horse_add.html', {'form': form})
 
@@ -300,12 +298,11 @@ def editprofile(request):
         profile = User.objects.get(id=request.user.id)
         horse_owner = HorseOwner.objects.get(user_id=profile)
         if request.method == 'POST':
-            form = UpdateUserForm(request.POST, request.FILES)
+            form = UpdateUserForm(request.POST, request.FILES, instance = horse_owner)
             if form.is_valid():
                 data = form.cleaned_data
                 first_name = data.get('first_name')
                 last_name = data.get('last_name')
-                email = data.get('email')
                 contact_number = data.get('contact_number')
                 display_image = data.get('display_image')
 
@@ -314,8 +311,6 @@ def editprofile(request):
                     horse_owner.first_name = first_name
                 if(len(last_name)>1):
                     horse_owner.last_name = last_name
-                if(len(email)>1):
-                    horse_owner.email = email
                 if(len(contact_number)>9):
                     horse_owner.contact_number = contact_number
                 horse_owner.display_image = display_image
@@ -326,7 +321,7 @@ def editprofile(request):
             else:
                 form = UpdateUserForm()
                 return redirect('/editprofile', {'message': 'One or more fields invalid, please correct these fields','form':form})
-        form = UpdateUserForm()
+        form = UpdateUserForm(instance=horse_owner)
         return render(request, 'editprofile.html',{'form':form})
 
 
@@ -343,7 +338,6 @@ def horseprofile(request):
 
 
 def horse_inDepth(request, horse_id):
-    # template_name = 'horse_inDepth.html'
     if request.user.is_authenticated:
         now = timezone.now()
         horse = Horse.objects.get(id = horse_id)
@@ -351,26 +345,34 @@ def horse_inDepth(request, horse_id):
         performances = AddPerformance.objects.filter(horse = horse)
         return render(request, 'horse_inDepth.html', {'horse': horse, 'reminders':reminders, 'performances': performances})
 
-# @require_http_methods(["DELETE"])
+# Delete a reminder record for a horse
 def delete_reminder(request, reminder_id):
     if request.user.is_authenticated:
+        # Find the reminder that needs to be deleted in the database and delete
         reminder = AddReminder.objects.get(pk = reminder_id)
         horse = Horse.objects.get(id = reminder.horse.id)
         reminder.delete()
+        # Redirect back to horse_inDepth page when performance is deleted
         return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
     else:
         return redirect('/login')
 
+# Edit reminder of a specific horse belonging to a user
 def edit_reminder(request, reminder_id):
+    # Check for authentication
     if request.user.is_authenticated:
+        # only perfrom edits when there is a post request
         if request.method == 'POST':
+            # Get the reminder from database that needs to be edited
             reminder = AddReminder.objects.get(pk = reminder_id)
             horse = Horse.objects.get(id = reminder.horse.id)
             form = EditReminderForm(request.POST, instance = reminder)
+            # if the edits are valid, save the changes and redirect back to horse_inDepth page
             if form.is_valid:
                 form.save()
                 return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
         else:
+            # If it is a get request jsut load the current values entered for reminder
             reminder = AddReminder.objects.get(pk =reminder_id)
             form = EditReminderForm(instance=reminder)
             return render(request, 'edit_reminder.html', {'form': form})
@@ -378,17 +380,22 @@ def edit_reminder(request, reminder_id):
     else:
         return redirect('/login')
 
+# Edit performance of a specific horse belonging to a user
 def edit_performance(request, performance_id):
+    # Check for authentication
     if request.user.is_authenticated:
+        # only perform edits when there is a post request
         if request.method == 'POST':
+            # Get the performance from database that needs to be edited
             performance = AddPerformance.objects.get(pk = performance_id)
             horse = Horse.objects.get(id = performance.horse.id)
             form = EditPerformanceForm(request.POST, instance = performance)
+            # if the edits are valid, save the changes and redirect back to horse_inDepth page
             if form.is_valid:
                 form.save()
                 return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
         else:
-            print (1)
+            # If it is a get request jsut load the current values entered for performance
             performance = AddPerformance.objects.get(pk = performance_id)
             form = EditPerformanceForm(instance=performance)
             return render(request, 'edit_performance.html', {'form': form})
@@ -396,14 +403,55 @@ def edit_performance(request, performance_id):
     else:
         return redirect('/login')
 
-def delete_perfromance(request, performance_id):
+def edit_horse(request, horse_id):
     if request.user.is_authenticated:
+        horse = Horse.objects.get(id = horse_id)
+        if request.method == 'POST':
+            form = EditHorseForm(request.POST, request.FILES)
+            if form.is_valid():
+                data = form.cleaned_data
+                name = data.get('name')
+                weight = data.get('weight')
+                height = data.get('height')
+                whorl = data.get('whorl')
+                side_face = data.get('side_face')
+                full_side = data.get('full_side')
+
+                if(name is not None and len(name)>1):
+                    horse.name = name
+                if(weight is not None and weight>150 and weight<1700):
+                    horse.weight = weight
+                if(height is not None and height>50 and height<250):
+                    horse.height = height
+                if(whorl is not None):
+                    horse.whorl = whorl
+                if(side_face is not None):
+                    horse.side_face = side_face
+                if(full_side is not None):
+                    horse.full_side = full_side
+
+                horse.save()
+                return redirect('/horse_inDepth/' + str(horse.id) + '/', {'message': 'Horse Details Changed!'})
+            else:
+                form = EditHorseForm()
+                return redirect('/edithorse/' + str(horse.id) + '/', {'message': 'One or more fields invalid, please correct these fields', 'form': form, 'horse':horse})
+        form = EditHorseForm()
+        print(horse.name,horse.weight,horse.height)
+        return render(request, 'edithorse.html',{'form':form, 'horse':horse})
+
+# Delete a performance record for a horse
+def delete_perfromance(request, performance_id):
+    # check user authentication
+    if request.user.is_authenticated:
+        # Find the performance that needs to be deleted in the database and delete
         perfromance = AddPerformance.objects.get(pk = performance_id)
         horse = Horse.objects.get(id = perfromance.horse.id)
         perfromance.delete()
+        # Redirect back to horse_inDepth page when performance is deleted
         return HttpResponseRedirect('/horse_inDepth/' + str(horse.id) + '/')
     else:
         return redirect('login')
+
 def setting(request):
     return render(request, 'setting.html')
 
