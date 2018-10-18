@@ -13,12 +13,10 @@ class ModelTest(TestCase):
         horse_owner = HorseOwner.objects.create(user_id = user, first_name='Harold',
                                                 last_name='Gunderson')
         horse = Horse.objects.create(horse_owner = horse_owner, name = "Barry", age = 2, gender = "Male",
-                                    date_of_birth = "2016-1-1", weight = 100, height = 200)
+                                    date_of_birth = "2016-1-1", weight = 200, height = 200)
+        reminder = AddReminder.objects.create(horse = horse, time = '12:00 pm', event = "new reminder", date = "2018-12-12", notes = "just remind me!")
 
-def setUp(self):
-    # print("setUp: Run once for every test method to setup clean data.")
-    pass
-
+        performance = AddPerformance.objects.create(horse = horse, time = '11:20 am', duration = 20, event = "Running", additional = "just a run")
 
     def test_first_name(self):
         owner = HorseOwner.objects.get(id = 1)
@@ -60,7 +58,47 @@ def setUp(self):
         gender = horse.gender
         self.assertEquals(gender, "Male")
 
-    def test_date_of_birth(self):
+    def test_horse_date_of_birth(self):
         horse = Horse.objects.get(id = 1)
         date_of_birth = horse.date_of_birth
         self.assertEquals(date_of_birth, datetime.date(2016, 1, 1))
+
+    def test_reminder_event(self):
+        reminder = AddReminder.objects.get(id = 1)
+        event = reminder.event
+        self.assertEquals(event,"new reminder")
+
+    def test_reminder_note(self):
+        reminder = AddReminder.objects.get(id = 1)
+        notes = reminder.notes
+        self.assertEquals(notes, "just remind me!")
+
+    def test_reminder_date(self):
+        reminder = AddReminder.objects.get(id = 1)
+        date = reminder.date
+        self.assertEquals(date, datetime.date(2018,12,12))
+
+    def test_reminder_time(self):
+        reminder = AddReminder.objects.get(id = 1)
+        time = reminder.time
+        self.assertEquals(time, datetime.time(12, 0))
+
+    def test_performance_event(self):
+        performance = AddPerformance.objects.get(id = 1)
+        event = performance.event
+        self.assertEquals(event, "Running")
+
+    def tes_test_performance_duration(self):
+        performance = AddPerformance.objects.get(id = 1)
+        duration = perfromance.duration
+        self.assertEquals(duration, 20)
+
+    def test_performance_additional(self):
+        performance = AddPerformance.objects.get(id = 1)
+        additional = performance.additional
+        self.assertEquals(additional, "just a run")
+
+    def test_performance_time(self):
+        performance = AddPerformance.objects.get(id = 1)
+        time = performance.time
+        self.assertEquals(time, datetime.time(11,20))

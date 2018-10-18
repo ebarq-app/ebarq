@@ -27,7 +27,14 @@
         <h3>Height: {{horse.height}} cm</h3>
     </div>
     </div>
-
+<div class="col-md-5 mb30"></div>
+<div class="row probootstrap-gutter60">
+<div class="col-md-4 mb30">
+<a href="{% url 'edithorse' horse_id=horse.pk  %}">
+    <button type="button" class="addbutton"><b> Edit Horse</b></button>
+</a>
+</div>
+</div>
 <div class="row probootstrap-gutter60">
     <div class="col-md-3"></div>
     <div class="col-md-4 mb30">
@@ -70,9 +77,11 @@
         </a>
     </div>
 </div>
-
+<!-- <div class="col-md-5 mb30"></div>
+<div class="col-md-4 mb30">
 <a href="{% url 'edithorse' horse_id=horse.pk  %}">
     <button type="button" class="addbutton"><b> Edit Horse</b></button>
 </a>
+</div> -->
 
 {% endblock %}
