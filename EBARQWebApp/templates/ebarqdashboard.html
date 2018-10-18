@@ -4,31 +4,29 @@
 {% load staticfiles %}
 
 
-  <!-- END: header -->
+<!-- END: header -->
 
 
-  <!-- BEGIN: Content -->
-  <!--<section class="probootstrap-section">-->
-    {% for horse in horses %}
-    <div class="col-md-4 col-sm-4"></div>
-    <div class="col-md-6 col-sm-6 user-image">
-      <a href="#" class="probootstrap-hover-overlay">
-        <img src= {{ horse.whorl.url }} class="horse-photo" alt = "img">
+<!-- BEGIN: Content -->
+<!--<section class="probootstrap-section">-->
+<div class="padding2"></div>
+{% for horse in horses %}
+<div class="col-md-4 col-sm-4"></div>
+<div class="col-md-6 col-sm-6">
+    <a href="#" class="probootstrap-hover-overlay">
+        <img src={{ horse.whorl.url }} class="horse-photo" alt="img">
         <div class="probootstrap-text-overlay">
-          <h3>Name: {{horse.name}}</h3>
-          <p>ID: {{horse.pk}}</p>
+            <h3>Name: {{horse.name}}</h3>
+            <p>ID: {{horse.pk}}</p>
         </div>
-      </a>
-      <a href="{% url 'question'%}"><button type="button" class="addbutton">Do Questionnaire</button>
-            <!--<div class="ebarq-button">-->
-                <!--<a href="">Quiz Button</a>-->
-            <!--</div>-->
-    </div>
+    </a>
+    <a href="{% url 'question'%}">
+        <button type="button" class="addbutton">Do Questionnaire</button>
+    </a>
+</div>
 
-    <div class="clearfix visible-sm-block"></div>
-  </div>
-  {% endfor %}
-  <!--</section>-->
-  <!-- END: Content -->
+<div class="clearfix visible-sm-block"></div>
+</div>
+{% endfor %}
 
 {% endblock %}

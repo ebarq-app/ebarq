@@ -6,33 +6,17 @@
 
 <!-- BEGIN: Content -->
 <div class="row mb50">
-    <div class="col-md-3"></div>
-    <div class="col-md-4 user-image">
-        <figure><img src="{% static 'IMAGES/user.png' %}" alt="user photo" class="img-responsive"></figure>
+    <div class="col-md-4 user-image col-md-offset-4">
+        <figure><img src="{{owner.display_image.url}}" alt="user-imageSmall" class="user-imageSmall img-responsive"></figure>
     </div>
-    <div class="col-md-4 user-profile">
+    <div class="padding"></div>
+    <div class="col-md-4">
         <h1 class="probootstrap-headeing"><b>Participant Information Sheet</b></h1>
+        <section>The Participant Information Sheet is <a href="{% static 'Documents/E-BARQ Participant Information Sheet.pdf' %}">here</a> for you to read.</section>
         <h5 class="probootstrap-heading"><b>User ID:</b></h5>
         <h5 class="probootstrap-heading">5329345112</h5>
         <h5 class="probootstrap-heading"><b>User Name:</b></h5>
         <h5 class="probootstrap-heading">{{ user.first_name }}</h5>
-        <h5 class="probootstrap-heading">What is this study about?</h5>
-        <h5 class="probootstrap-heading">Who is running the study?</h5>
-        <h5 class="probootstrap-heading">What will this study involve for me?</h5>
-        <h5 class="probootstrap-heading">How much of my time will this study take?</h5>
-        <h5 class="probootstrap-heading">Who can take part in the study?</h5>
-        <h5 class="probootstrap-heading">Do I have to be in the study? Can I withdraw from the study once I've
-            started?</h5>
-        <h5 class="probootstrap-heading">Are there any risks or costs associated with being in the study?</h5>
-        <h5 class="probootstrap-heading">Are there any benefits associated with being in the study?</h5>
-        <h5 class="probootstrap-heading">What will happen to the information about me that is collected during the
-            study?</h5>
-        <h5 class="probootstrap-heading">Can I tell other people about the study?</h5>
-        <h5 class="probootstrap-heading">What if I would like further information about the study?</h5>
-        <h5 class="probootstrap-heading">Will I be told the results of the study?</h5>
-        <h5 class="probootstrap-heading">What if I have a complaint or any concerns about the study?</h5>
-
-
     </div>
 </div>
 

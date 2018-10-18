@@ -15,7 +15,6 @@ urlpatterns = [
 
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^horse_add/',views.horse_add_view, name='horse_add'),
-    url(r'^horse_add_new/',views.horse_add_new, name='horse_add_new'),
     url(r'^edithorse/(?P<horse_id>[0-9]+)/$',views.edit_horse, name='edithorse'),
 
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',

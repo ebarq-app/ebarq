@@ -13,7 +13,7 @@ class HorseOwner(models.Model):
     # User must have a first name, last name is not required (trust me I know a guy)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    display_image = models.ImageField(upload_to='', default='user.png')
+    display_image = models.ImageField(upload_to='', default='user.png',blank=True)
 
     phone_regex = RegexValidator(regex=r'^\+?1?\d{10}$',
                                  message="Phone number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
@@ -29,9 +29,9 @@ class Horse(models.Model):
     )
     horse_owner = models.ForeignKey(HorseOwner, on_delete=models.CASCADE) # An owner can have multiple horses
     #horse_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    whorl = models.ImageField(upload_to='')
-    side_face = models.ImageField(upload_to='')
-    full_side = models.ImageField(upload_to='')
+    whorl = models.ImageField(upload_to='', default='default3.png',blank=True)
+    side_face = models.ImageField(upload_to='',default='default2.jpg',blank=True)
+    full_side = models.ImageField(upload_to='',default='default1.jpg',blank=True)
 
     # Horse has these details
     name = models.CharField(max_length=50)
@@ -64,7 +64,6 @@ class AddPerformance(models.Model):
 
 class AddReminder(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
-
     event = models.CharField(max_length=100)
     time = models.TimeField()
     date = models.DateField()
