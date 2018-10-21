@@ -61,7 +61,7 @@ class HorseSignupForm(forms.ModelForm):
         model = Horse
         fields = ('name', 'age', 'full_side', 'side_face', 'whorl')
         widgets = {
-            "Horse's Name": forms.TextInput(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
             'age': forms.TextInput(attrs={'class': 'form-control'}),
         }
 

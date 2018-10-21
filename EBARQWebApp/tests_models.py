@@ -102,3 +102,44 @@ class ModelTest(TestCase):
         performance = AddPerformance.objects.get(id = 1)
         time = performance.time
         self.assertEquals(time, datetime.time(11,20))
+
+# class AuthenticationTest(TestCase):
+#     def setUp(self):
+#         self.credentials = {
+#             'username': 'Sanic',
+#             'password': 'fast123456',
+#             'email': 'gotta_go@fast.com'
+#         }
+#         self.newcredentials = {
+#             'username': 'Sanic',
+#             'password': 'fast123456'
+#         }
+#         # user = User.objects.create_user(**self.credentials)
+#         # user.is_active = True
+#         # user.save()
+#         # owner.save()
+#
+#     def test_registration_user_not_activated(self):
+#         response = self.client.post('/signup', self.credentials, follow=True)
+#         # newresponse = self.client.post('/login/', self.newcredentials)
+#         self.assertFalse(response.context['user'].is_active)
+#
+#     def test_invalid_user_login_redirect(self):
+#         newresponse = self.client.post('/login/', self.newcredentials)
+#         self.assertTrue(newresponse.status_code, 301)
+#         self.assertEquals(newresponse["location"],'/login' )
+#
+#     def test_inactive_user_redirect(self):
+#         response = self.client.post('/signup', self.credentials, follow=True)
+#         newresponse = self.client.post('/login/', self.newcredentials)
+#         self.assertEquals(newresponse["location"],'/login' )
+#
+#     def test_active_user_with_no_horse_redirect(self):
+#         user = User.objects.create_user(**self.credentials)
+#         user.is_active = False
+#         owner = HorseOwner.objects.create(user_id = user, first_name = "Sanic", last_name = "sane")
+#         newresponse = self.client.post('/login/', self.newcredentials)
+#         owner.remove()
+#         self.assertEquals(newresponse["location"],'/horse_add')
+#         delete(user)
+#         delete(owner)

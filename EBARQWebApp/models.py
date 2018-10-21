@@ -30,17 +30,14 @@ class Horse(models.Model):
     )
     horse_owner = models.ForeignKey(HorseOwner, on_delete=models.CASCADE) # An owner can have multiple horses
     #horse_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    whorl = models.ImageField(upload_to='', default='default3.png',blank=True)
-    side_face = models.ImageField(upload_to='',default='default2.jpg',blank=True)
     full_side = models.ImageField(upload_to='',default='default1.jpg',blank=True)
+        whorl = models.ImageField(upload_to='', default='default3.png',blank=True)
+        side_face = models.ImageField(upload_to='',default='default2.jpg',blank=True)
 
     # Horse has these details
     name = models.CharField(max_length=50)
     age = models.IntegerField()
-    gender = models.CharField(max_length=6, choices = CHOICES, default = 'male')
-    date_of_birth = models.DateField()
-    weight = models.IntegerField(validators= [MaxValueValidator(1700), MinValueValidator(150)])
-    height = models.IntegerField(validators= [MaxValueValidator(250), MinValueValidator(50)])
+
 
     def __str__(self):
         # Represent the Horse with a String, uniquely with the horse_id for admin site
