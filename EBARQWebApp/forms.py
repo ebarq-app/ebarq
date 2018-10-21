@@ -171,9 +171,7 @@ class EditHorseForm(forms.ModelForm):
 
     # Horse has these details
     name = forms.CharField(max_length=50, required=False)
-    weight = forms.IntegerField(validators= [MaxValueValidator(1700), MinValueValidator(150)], required=False)
-    height = forms.IntegerField(validators= [MaxValueValidator(250), MinValueValidator(50)], required=False)
 
     class Meta:
         model = Horse
-        fields = ('name','weight','height','whorl','side_face','full_side')
+        fields = ('name','whorl','side_face','full_side')
