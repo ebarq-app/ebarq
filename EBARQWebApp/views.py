@@ -154,16 +154,11 @@ def horse_add_view(request):
                 data = form.cleaned_data
                 name = data.get('name')
                 age = data.get('age')
-                gender = data.get('gender')
-                date_of_birth = data.get('date_of_birth')
-                weight = data.get('weight')
-                height = data.get('height')
                 whorl = data.get('whorl')
                 side_face = data.get('side_face')
                 full_side = data.get('full_side')
 
-                h = Horse(name=name, age=age, gender=gender, date_of_birth=date_of_birth,
-                          weight=weight, height=height, whorl=whorl, side_face=side_face,
+                h = Horse(name=name, age=age, whorl=whorl, side_face=side_face,
                           full_side=full_side, horse_owner=HorseOwner.objects.get(user_id=request.user))
 
                 h.save()
