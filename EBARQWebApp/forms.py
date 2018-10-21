@@ -59,13 +59,10 @@ class HorseSignupForm(forms.ModelForm):
 
     class Meta:
         model = Horse
-        fields = ('name', 'age', 'gender', 'date_of_birth', 'weight', 'height', 'whorl', 'side_face', 'full_side')
+        fields = ('name', 'age', 'full_side', 'side_face', 'whorl')
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            "Horse's Name": forms.TextInput(attrs={'class': 'form-control'}),
             'age': forms.TextInput(attrs={'class': 'form-control'}),
-            'date_of_birth': DateInput(attrs={'type': 'date'}),
-            'weight': forms.TextInput(attrs={'class': 'form-control'}),
-            'height': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
     def clean_date_of_birth(self):
