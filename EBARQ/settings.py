@@ -131,17 +131,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-DEFAULT_FILE_STORAGE = storages.backends.s3boto3.S3Boto3Storage
-STATICFILES_STORAGE = storages.backends.s3boto3.S3Boto3Storage
-AWS_ACCESS_KEY_ID = os.environ.get(“AWS_ACCESS_KEY_ID”, “”)
-AWS_SECRET_ACCESS_KEY = os.environ.get(“AWS_SECRET_ACCESS_KEY”, “”)
-AWS_STORAGE_BUCKET_NAME = os.environ.get(“AWS_STORAGE_BUCKET_NAME”, “”)
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
 AWS_QUERYSTRING_AUTH = False
-AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + ‘.s3.amazonaws.com’
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 
 #static media settings
-MEDIA_URL = ‘https://' + AWS_STORAGE_BUCKET_NAME + ‘.s3.amazonaws.com/’ + ‘media/’
+MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/' + 'media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 print("base dir path", BASE_DIR)
@@ -156,6 +156,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_FINDERS = (
-‘django.contrib.staticfiles.finders.FileSystemFinder’,
-‘django.contrib.staticfiles.finders.AppDirectoriesFinder’,
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
