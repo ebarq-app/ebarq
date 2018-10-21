@@ -22,6 +22,7 @@ class HorseOwner(models.Model):
     def __str__(self):
         return self.name
 
+
 class Horse(models.Model):
     CHOICES = (
     ('male', 'male'),
@@ -44,6 +45,13 @@ class Horse(models.Model):
     def __str__(self):
         # Represent the Horse with a String, uniquely with the horse_id for admin site
         return self.name
+
+class EbarqRecord(models.Model):
+    horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
+    record_id = models.IntegerField()
+    start_stamp = models.DateField(null=True)
+    end_stamp = models.DateField(null=True)
+
 
 class Question(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE) # Links this question to the Horse

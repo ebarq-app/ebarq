@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
-
+import requests
 
 def index(request):
     return redirect('login')
@@ -181,17 +181,46 @@ def horse_add_view(request):
 
     return redirect('/login')
 
+# def temp_record_view(request):
+
 
 def ebarqdashboard(request):
     if request.user.is_authenticated:
-        profile = User.objects.get(id=request.user.id)
-        horse_owner = HorseOwner.objects.get(user_id=profile)
-        horse = Horse.objects.filter(horse_owner=horse_owner)
-        if not horse:
-            return redirect('/horse_add')
-        return render(request, 'ebarqdashboard.html', {'horses': horse})
+        if request.method == 'POST':
+            # Call API
+            # data = {
+            #     'token': 'F6CF0866B9B26D6B44661F25D09F51E5',
+            #     'content': 'generateNextRecordName'
+            # }
+            #
+            # r = requests.post('https://redcap.sydney.edu.au/api/', data=data)
+            # buf = r.content
+            # b = buf.decode('utf-8')
+            # record = int(b)
+            # print(record)
+
+            #rec = EbarqRecord()
+
+            return redirect('https://redcap.sydney.edu.au/surveys/?s=78DX9TCWJW')
+
+        else:
+            profile = User.objects.get(id=request.user.id)
+            horse_owner = HorseOwner.objects.get(user_id=profile)
+            horse = Horse.objects.filter(horse_owner=horse_owner)
+            if not horse:
+                return redirect('/horse_add')
+            return render(request, 'ebarqdashboard.html', {'horses': horse})
     else:
         return redirect('/login')
+
+def survey_complete_view(request, email, record_id, horse_id):
+    if request.user.is_authenticated:
+        horse = Horse.objects.get(id = horse_id)
+        record = EbarqRecord(record_id = record_id, horse = horse)
+        record.save()
+        return HttpResponseRedirect('/dashboard')
+    else:
+        return HttpResponseRedirect('/login')
 
 
 def addperformance(request, horse_id):

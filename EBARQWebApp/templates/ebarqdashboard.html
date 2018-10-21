@@ -19,11 +19,15 @@
             <h3>Name: {{horse.name}}</h3>
             <p>ID: {{horse.pk}}</p>
         </div>
-    </a>
-    <a href="{% url 'question'%}">
-        <button type="button" class="addbutton">Do Questionnaire</button>
-    </a>
-</div>
+      </a>
+      <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="addbutton">Do Questionnaire</button>
+      </form>
+            <!--<div class="ebarq-button">-->
+                <!--<a href="">Quiz Button</a>-->
+            <!--</div>-->
+    </div>
 
 <div class="clearfix visible-sm-block"></div>
 </div>

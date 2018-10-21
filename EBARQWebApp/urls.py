@@ -29,6 +29,9 @@ urlpatterns = [
     url(r'^question/', views.question, name='question'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^ebarqdashboard/',views.ebarqdashboard, name='ebarqdashboard'),
+
+    url(r'^survey_complete/(?P<email>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/(?P<record_id>[0-9]+)/(?P<horse_id>[0-9]+)/$',views.survey_complete_view, name='survey_complete'),
+
     url(r'^userprofile/',views.userprofile, name='userprofile'),
     url(r'^editprofile/',views.editprofile, name='editprofile'),
     url(r'^horseprofile/',views.horseprofile, name='horseprofile'),
