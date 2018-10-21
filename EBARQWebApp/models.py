@@ -28,7 +28,7 @@ class Horse(models.Model):
     ('male', 'male'),
     ('female', 'female')
     )
-    horse_owner = models.ForeignKey(HorseOwner, on_delete=models.CASCADE) # An owner can have multiple horses
+    horse_owner = models.ForeignKey(HorseOwner, on_delete=models.CASCADE) # An owner can have multiple horsesg
     #horse_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     full_side = models.ImageField(upload_to='',default='default1.jpg',blank=True)
     whorl = models.ImageField(upload_to='', default='default3.png',blank=True)

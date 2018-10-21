@@ -454,7 +454,7 @@ def edit_horse(request, horse_id):
                                 {'message': 'One or more fields invalid, please correct these fields', 'form': form,
                                  'horse': horse})
         form = EditHorseForm()
-        print(horse.name, horse.weight, horse.height)
+
         return render(request, 'edithorse.html', {'form': form, 'horse': horse})
     else:
         return redirect('/login')
