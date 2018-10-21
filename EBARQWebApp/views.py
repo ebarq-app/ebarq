@@ -433,18 +433,12 @@ def edit_horse(request, horse_id):
             if form.is_valid():
                 data = form.cleaned_data
                 name = data.get('name')
-                weight = data.get('weight')
-                height = data.get('height')
                 whorl = data.get('whorl')
                 side_face = data.get('side_face')
                 full_side = data.get('full_side')
 
                 if (name is not None and len(name) > 1):
                     horse.name = name
-                if (weight is not None and weight > 150 and weight < 1700):
-                    horse.weight = weight
-                if (height is not None and height > 50 and height < 250):
-                    horse.height = height
                 if (whorl is not None):
                     horse.whorl = whorl
                 if (side_face is not None):
