@@ -1,4 +1,4 @@
-{% extends "headerLogbook.html" %}
+{% extends "headerNoNav.html" %}
 {% block content %}
 {% load staticfiles %}
 <!-- END: header -->
@@ -6,12 +6,14 @@
 
 <!-- BEGIN: Content -->
 <div class="row mb50">
-    <div class="col-md-4 user-image col-md-offset-3">
+    <div class="col-md-4 user-image col-md-offset-1">
         <figure><img src="{{owner.display_image.url}}" alt="user-imageSmall" class="user-imageSmall img-responsive">
         </figure>
     </div>
+
     <div class="padding"></div>
-    <div class="col-md-5">
+
+    <div class="col-sm-pull-1 col-md-6">
         <h1 class="probootstrap-heading"><b>Participant Information Sheet</b></h1>
         <section>
             You have been invited to participate in this study because you are a horse owner and familiar with your
@@ -24,17 +26,31 @@
 
 
             <blockquote>- Understand what you have read.</br>
-            - Agree to take part in the research study as outlined below.</br>
-            - Agree to the use of your personal information as described.</blockquote>
-            <div>
-                <img src="{% static 'IMAGES/flowpath.png' %}" class="col-lg-pull-2 user-imageMedium col-md-offset-4">
-            </div>
+                - Agree to take part in the research study as outlined below.</br>
+                - Agree to the use of your personal information as described.
+            </blockquote>
+
+            <img src="{% static 'IMAGES/flowpath.png' %}" class="col-lg-pull-4 user-imageMedium col-sm-offset-2"></br>
 
 
             You can download a copy of the Participant Information Statement <a
                 href="{% static 'Documents/E-BARQ Participant Information Sheet.pdf' %}"><b><i>here</i></b></a>.
         </section>
+         <div class="col-md-3"></div>
+        <div>
+            <a href="{% url 'ebarqdashboard'  %}" type="button" class="col-md-4 addhorsebutton">
+                I Agree
+            </a>
+        </div>
 
+        <div class="col-md-2">
+
+        </div>
+
+
+        <!--<h5 class="probootstrap-heading">5329345112</h5>-->
+        <!--<h5 class="probootstrap-heading"><b>User Name:</b></h5>-->
+        <!--<h5 class="probootstrap-heading">{{ user.first_name }}</h5>-->
 
     </div>
 </div>

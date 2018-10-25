@@ -9,8 +9,7 @@ from django.dispatch import receiver
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 
 class HorseOwner(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE) # Shouldn't this be One-to-One (one user has one user_id)
-    # User must have a first name, last name is not required (trust me I know a guy)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     display_image = models.ImageField(upload_to='', default='user.png',blank=True)
@@ -61,7 +60,7 @@ class Question(models.Model):
 
 class AddPerformance(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
-
+    owner_id = models.IntegerField(default = 0)
     time = models.TimeField()
     event = models.CharField(max_length=100)
     duration = models.IntegerField()
@@ -69,6 +68,7 @@ class AddPerformance(models.Model):
 
 class AddReminder(models.Model):
     horse = models.ForeignKey(Horse, on_delete=models.CASCADE)
+    owner_id = models.IntegerField(default = 0)
     event = models.CharField(max_length=100)
     time = models.TimeField()
     date = models.DateField()

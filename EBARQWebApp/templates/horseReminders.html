@@ -6,38 +6,29 @@
 <!-- <main>
     <section id="next-section" class="probootstrap-section">
       <div class="container"> -->
-{% for h in horses %}
-<div class="row probootstrap-gutter60 mb50">
-    <div class="col-md-3"></div>
-    <div class="col-md-4 user-image">
-        <figure><img src="{% static 'IMAGES/barry.png' %}" class="img-responsive"></figure>
-    </div>
-    <div class="col-md-2 user-image"></div>
-    <div class="col-md-4">
-        <h2 class="probootstrap-heading"><b>{{ user.first_name }}</b></h2>
-        <h3>Name: {{h.name}}</h3>
-        <h3>ID: {{h.pk}}</h3>
-    </div>
-</div>
+
+
+
 
 <div class="row probootstrap-gutter60">
     <div class="col-md-3 mb30"></div>
     <div class="col-md-4 mb30">
-        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Barry's Upcoming Events</b></h4>
+        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Upcoming Events For your horses</b></h4>
+        {%for reminder in reminders%}
         <ul class="probootstrap-blog-list">
-            <li><h4>Training:</h4>
-                <span class="meta">10:00  18/9/2018</span>
+            <li><h4>{{reminder.horse.name}}</h4>
+                <span class="meta">{{reminder.event}}</span><br>
+                <span class="meta"> {{reminder.time}} , {{reminder.date}}</span>
+                <p>{{reminder.notes}}</p>
             </li>
         </ul>
-        <a href="{% url 'addreminder' horse_id=h.pk %}">
-            <button type="button" class="addbutton"><b> Add Reminder</b></button>
-        </a>
     </div>
+    {% endfor %}
     <div class="col-md-4 mb30">
-        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Barry's Upcoming Performances</b></h4>
+        <h4 class="mb30"><img src="{% static 'IMAGES/star.png' %}"> <b>Performances</b></h4>
         <ul class="probootstrap-blog-list">
-
-            <li><h4>Training:</h4>
+{%for perfromance in performances%}
+            <li><h4>{{performance.horse.name}}</h4>
                 <span class="meta">10:00  18/9/2018</span>
                 <span class="meta">Distance: 1850m</span>
                 <span class="meta">Time: 1:54.700</span>
@@ -45,7 +36,6 @@
                 <span class="meta">Came 8th place in practice competition</span>
             </li>
         </ul>
-        <a href="{% url 'addperformance' horse_id=h.pk  %}">
             <button type="button" class="addbutton"><b> Add Performance</b></button>
         </a>
     </div>

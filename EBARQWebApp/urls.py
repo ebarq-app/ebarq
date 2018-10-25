@@ -41,5 +41,6 @@ urlpatterns = [
     url(r'^addperformance/(?P<horse_id>[0-9]+)/$',views.addperformance, name='addperformance'),
     url(r'^addreminder/(?P<horse_id>[0-9]+)/$',views.addreminder, name='addreminder'),
     url(r'^horseReminders/',views.horseReminders, name='horseReminders'),
-    url(r'^setting/',views.setting, name='setting')
+    url(r'^setting/',views.setting, name='setting'),
+    url(r'^PIS/',views.PIS,name='PIS')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

@@ -84,7 +84,7 @@ class QuestionForm(forms.ModelForm):
 
 
 class AddReminderForm(forms.ModelForm):
-    notes = forms.CharField(widget=forms.Textarea)
+    additional = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = AddReminder

@@ -38,7 +38,7 @@
         <ul class="probootstrap-blog-list">
             {% for reminder in reminders %}
             <li><h4>{{reminder.event}}</h4>
-                <span class="meta">{{reminder.time}}  {{reminder.date}}</span>
+                <span class="meta">{{reminder.time}} {{reminder.date}}</span>
                 <p>{{reminder.notes}}</p>
             </li>
             <a href="{% url 'delete_reminder' reminder_id=reminder.pk %}">
