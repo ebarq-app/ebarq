@@ -134,17 +134,18 @@ USE_TZ = True
 ###########################################
 #AWS setup
 ##########################################
-# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
-# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
-# AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
-# AWS_QUERYSTRING_AUTH = False
-# AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 
-#static media settings
-# MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/' + 'media/'
+# static media settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/' + 'media/'
 
 
 
@@ -158,8 +159,8 @@ LOGIN_REDIRECT_URL = 'dashboard'
 ###################################
 #local
 ###################################
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
@@ -169,8 +170,7 @@ EMAIL_HOST_USER = 'ebarq11@gmail.com'
 EMAIL_HOST_PASSWORD = '$R<{Z,79{V4AT'
 EMAIL_PORT = 587
 
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#
 
 STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.FileSystemFinder',
