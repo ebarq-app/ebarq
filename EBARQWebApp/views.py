@@ -17,6 +17,7 @@ from django.core.mail import EmailMessage
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 import requests
+import redex
 
 def index(request):
     return redirect('login')
@@ -213,11 +214,13 @@ def ebarqdashboard(request):
 def survey_complete_view(request, email, record_id, horse_id):
     if request.user.is_authenticated:
         horse = Horse.objects.get(id = horse_id)
+        horse.questionare_required = False
+        horse.save()
         record = EbarqRecord(record_id = record_id, horse = horse)
         record.save()
-        return HttpResponseRedirect('/dashboard')
+        return redirect('/dashboard')
     else:
-        return HttpResponseRedirect('/login')
+        return redirect('/login')
 
 
 def addperformance(request, horse_id):
@@ -441,6 +444,7 @@ def edit_performance(request, performance_id):
 def edit_horse(request, horse_id):
     if request.user.is_authenticated:
         horse = Horse.objects.get(id=horse_id)
+        print (horse.questionare_required)
         if request.method == 'POST':
             form = EditHorseForm(request.POST, request.FILES, instance = horse)
             if form.is_valid():
@@ -452,6 +456,8 @@ def edit_horse(request, horse_id):
                 side_face = data.get('side_face')
                 full_side = data.get('full_side')
 
+                #remember to remove this for later on
+                horse.questionare_required = False
                 if (name is not None and len(name) > 1):
                     horse.name = name
                 if (weight is not None and weight > 150 and weight < 1700):
@@ -503,9 +509,16 @@ def setting(request):
         return redirect('/login')
 
 
-def graph(request):
+def graph(request,horse_id):
     if request.user.is_authenticated:
-        return render(request, 'ebarqgraph.html')
+        horse = Horse.objects.get(id=horse_id)
+
+        # Insert generation code here
+        record = EbarqRecord.objects.filter(horse=horse).order_by('-start_stamp')
+        record_id = record[0].record_id
+        totals, mean_totals = redex.redcap_survey(record_id)
+        print(totals, mean_totals)
+        return render(request, 'ebarqgraph.html', {'horse':horse, 'totals':totals, 'mean_totals':mean_totals})
     else:
         return redirect('/login')
 

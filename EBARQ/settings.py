@@ -161,16 +161,16 @@ LOGIN_REDIRECT_URL = 'dashboard'
 ###################################
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-LOGIN_REDIRECT_URL = 'dashboard'
-
+#
+# LOGIN_REDIRECT_URL = 'dashboard'
+#
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ebarq11@gmail.com'
 EMAIL_HOST_PASSWORD = '$R<{Z,79{V4AT'
 EMAIL_PORT = 587
 
-#
+
 
 STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.FileSystemFinder',

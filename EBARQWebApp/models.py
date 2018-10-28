@@ -36,7 +36,7 @@ class Horse(models.Model):
     # Horse has these details
     name = models.CharField(max_length=50)
     age = models.IntegerField()
-
+    questionare_required = models.BooleanField(default=True)
 
     def __str__(self):
         # Represent the Horse with a String, uniquely with the horse_id for admin site
