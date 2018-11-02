@@ -20,38 +20,39 @@
     <![endif]-->
 </head>
 <body>
-   <div class="probootstrap-loader"></div>
+<div class="probootstrap-loader"></div>
 
-   <header role="banner" class="probootstrap-header">
-       <div class="bannerbuffer">
-           <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
-       </div>
-   </header>
+<header role="banner" class="probootstrap-header">
+    <div class="bannerbuffer">
+        <img src="{% static 'IMAGES/logo3.png' %}" class="logbook-logo">
+    </div>
+</header>
 
 
- <header role="banner" class="probootstrap-header">
-     <!--<div class="container">-->
-         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
-         <div class="mobile-menu-overlay"></div>
-     <!--</div>-->
-     <nav role="navigation" class="probootstrap-nav hidden-xs">
-         <ul class="probootstrap-main-nav">
-             <div class="sidebar probootstrap-nav ">
-              <a href="{% url 'dashboard'  %}">Home</a>
-              <a href="{% url 'userprofile'  %}">My Profile</a>
-              <a href="{% url 'horseprofile'  %}">Horse Profile</a>
-              <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
-              <a href="{% url 'horseReminders'  %}">Horse Reminders</a>
-              <a href="{% url 'setting'  %}">Participant Information Sheet</a>
-              <a href="{% url 'logout'  %}">Logout</a>
-             </div>
-         </ul>
-         <div class="extra-text visible-xs">
-           <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-         </div>
-       </nav>
-   </div>
- </header>
+<header role="banner" class="probootstrap-header">
+    <!--<div class="container">-->
+    <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+    <div class="mobile-menu-overlay"></div>
+    <!--</div>-->
+    <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+            <div class="sidebar probootstrap-nav ">
+                <a href="{% url 'dashboard'  %}">Home</a>
+                <a href="{% url 'userprofile'  %}">My Profile</a>
+                <a href="{% url 'horseprofile'  %}">Horse Profile</a>
+                <a href="{% url 'ebarqdashboard'  %}">E-BARQ</a>
+                <a href="{% url 'horseReminders'  %}">Horse Reminders</a>
+                <a href="{% url 'resources'  %}" role="button">Resources</a>
+                <a href="{% url 'setting'  %}">Participant Information Sheet</a>
+                <a href="{% url 'logout'  %}">Logout</a>
+            </div>
+        </ul>
+        <div class="extra-text visible-xs">
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+        </div>
+    </nav>
+    </div>
+</header>
 {% block content %}
 {% endblock %}
 <div class="gototop js-top">

@@ -143,7 +143,9 @@ AWS_QUERYSTRING_AUTH = False
 AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 
+
 # static media settings
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/' + 'media/'
 
@@ -163,7 +165,7 @@ LOGIN_REDIRECT_URL = 'dashboard'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #
 # LOGIN_REDIRECT_URL = 'dashboard'
-#
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ebarq11@gmail.com'

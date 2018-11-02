@@ -12,12 +12,11 @@ class ModelTest(TestCase):
                                   email = "harold.gunderson@gmail.com")
         horse_owner = HorseOwner.objects.create(user_id = user, first_name='Harold',
                                                 last_name='Gunderson')
-        horse = Horse.objects.create(horse_owner = horse_owner, name = "Barry", age = 2, gender = "Male",
-                                    date_of_birth = "2016-1-1", weight = 200, height = 200)
+        horse = Horse.objects.create(horse_owner = horse_owner, name = "Barry",age = 10)
         reminder = AddReminder.objects.create(horse = horse, time = '12:00 pm', event = "new reminder", date = "2018-12-12", notes = "just remind me!")
 
         performance = AddPerformance.objects.create(horse = horse, time = '11:20 am', duration = 20, event = "Running", additional = "just a run")
-
+        record = EbarqRecord.objects.create(horse = horse, record_id = 10, start_stamp = '2019-12-12', end_stamp = '2019-12-12')
     def test_first_name(self):
         owner = HorseOwner.objects.get(id = 1)
         first_name = owner.first_name
@@ -51,17 +50,17 @@ class ModelTest(TestCase):
     def test_horse_age(self):
         horse = Horse.objects.get(id = 1)
         age = horse.age
-        self.assertEquals(age, 2)
+        self.assertEquals(age, 10)
 
-    def test_horse_gender(self):
-        horse = Horse.objects.get(id= 1)
-        gender = horse.gender
-        self.assertEquals(gender, "Male")
-
-    def test_horse_date_of_birth(self):
+    def test_horse_questionare_required(self):
         horse = Horse.objects.get(id = 1)
-        date_of_birth = horse.date_of_birth
-        self.assertEquals(date_of_birth, datetime.date(2016, 1, 1))
+        questionare_required = horse.questionare_required
+        self.assertEquals(questionare_required,True)
+
+    def test_horse_foreign_key(self):
+        horse = Horse.objects.get(id = 1)
+        owner = horse.horse_owner
+        self.assertEquals(owner.id,1)
 
     def test_reminder_event(self):
         reminder = AddReminder.objects.get(id = 1)
@@ -83,6 +82,11 @@ class ModelTest(TestCase):
         time = reminder.time
         self.assertEquals(time, datetime.time(12, 0))
 
+    def test_reminder_foreign_key(self):
+        reminder = AddReminder.objects.get(id = 1)
+        horse = reminder.horse
+        self.assertEquals(horse.id, 1)
+
     def test_performance_event(self):
         performance = AddPerformance.objects.get(id = 1)
         event = performance.event
@@ -103,43 +107,27 @@ class ModelTest(TestCase):
         time = performance.time
         self.assertEquals(time, datetime.time(11,20))
 
-# class AuthenticationTest(TestCase):
-#     def setUp(self):
-#         self.credentials = {
-#             'username': 'Sanic',
-#             'password': 'fast123456',
-#             'email': 'gotta_go@fast.com'
-#         }
-#         self.newcredentials = {
-#             'username': 'Sanic',
-#             'password': 'fast123456'
-#         }
-#         # user = User.objects.create_user(**self.credentials)
-#         # user.is_active = True
-#         # user.save()
-#         # owner.save()
-#
-#     def test_registration_user_not_activated(self):
-#         response = self.client.post('/signup', self.credentials, follow=True)
-#         # newresponse = self.client.post('/login/', self.newcredentials)
-#         self.assertFalse(response.context['user'].is_active)
-#
-#     def test_invalid_user_login_redirect(self):
-#         newresponse = self.client.post('/login/', self.newcredentials)
-#         self.assertTrue(newresponse.status_code, 301)
-#         self.assertEquals(newresponse["location"],'/login' )
-#
-#     def test_inactive_user_redirect(self):
-#         response = self.client.post('/signup', self.credentials, follow=True)
-#         newresponse = self.client.post('/login/', self.newcredentials)
-#         self.assertEquals(newresponse["location"],'/login' )
-#
-#     def test_active_user_with_no_horse_redirect(self):
-#         user = User.objects.create_user(**self.credentials)
-#         user.is_active = False
-#         owner = HorseOwner.objects.create(user_id = user, first_name = "Sanic", last_name = "sane")
-#         newresponse = self.client.post('/login/', self.newcredentials)
-#         owner.remove()
-#         self.assertEquals(newresponse["location"],'/horse_add')
-#         delete(user)
-#         delete(owner)
+    def test_performance_foreign_key(self):
+        performance = AddPerformance.objects.get(id = 1)
+        horse = performance.horse
+        self.assertEquals(horse.id, 1)
+
+    def test_record_id(self):
+        record = EbarqRecord.objects.get(id = 1)
+        record_id = record.record_id
+        self.assertEquals(record_id, 10)
+
+    def test_record_start_stamp(self):
+        record = EbarqRecord.objects.get(id = 1)
+        start = record.start_stamp
+        self.assertEquals(start, datetime.date(2019,12,12))
+
+    def test_record_end_stamp(self):
+        record = EbarqRecord.objects.get(id = 1)
+        end = record.end_stamp
+        self.assertEquals(end, datetime.date(2019,12,12))
+
+    def test_record_foreign_key(self):
+        record = EbarqRecord.objects.get(id = 1)
+        horse = record.horse
+        self.assertEquals(horse.id, 1)

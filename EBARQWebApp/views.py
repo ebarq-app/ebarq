@@ -536,3 +536,9 @@ def PIS(request):
         return render(request,'PIS.html',{'owner':owner})
     else:
         return redirect('/login')
+
+def resources(request):
+    if request.user.is_authenticated:
+        return render(request,'resources.html')
+    else:
+        return redirect('/login')

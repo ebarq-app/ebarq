@@ -21,7 +21,7 @@ urlpatterns = [
         views.activate, name='activate'),
 
     url(r'^delete_reminder/(?P<reminder_id>[0-9]+)$', views.delete_reminder, name='delete_reminder'),
-    url(r'^delete_performance/(?P<performance_id>[0-9]+)$', views.delete_perfromance, name='delete_perfromance'),
+    url(r'^delete_performance/(?P<performance_id>[0-9]+)$', views.delete_perfromance, name='delete_performance'),
     url(r'^edit_reminder/(?P<reminder_id>[0-9]+)$', views.edit_reminder, name='edit_reminder'),
     url(r'^edit_performance/(?P<performance_id>[0-9]+)$', views.edit_performance, name='edit_performance'),
 
@@ -42,5 +42,6 @@ urlpatterns = [
     url(r'^addreminder/(?P<horse_id>[0-9]+)/$',views.addreminder, name='addreminder'),
     url(r'^horseReminders/',views.horseReminders, name='horseReminders'),
     url(r'^setting/',views.setting, name='setting'),
-    url(r'^PIS/',views.PIS,name='PIS')
+    url(r'^PIS/',views.PIS,name='PIS'),
+    url(r'^resource/',views.resources,name='resources')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )

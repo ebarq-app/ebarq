@@ -187,6 +187,7 @@
     border-radius: 12px;
     color: white;
     padding: 15px 32px;
+    margin-top: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -225,6 +226,7 @@
     /* margin-top: 80px; */
     padding-top: 100px;
     padding-left: 250px;
+    margin-right: 100px;
 }
 
 /* questionnaire page */
