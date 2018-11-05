@@ -1,5 +1,5 @@
 import requests
-
+import numpy as np
 def redcap_survey(record_id):
 
     URL = 'https://redcap.sydney.edu.au/api/'
@@ -22,7 +22,7 @@ def redcap_survey(record_id):
     splitter = buf[:-1].split(b'\n')
 
     # For storing each record
-    record = []
+    records = []
 
     # Remove the labels of report
     splitter.pop(0)
@@ -50,168 +50,210 @@ def redcap_survey(record_id):
         entr = entry.decode("utf-8")
         tmp_split = entr.split(",")
         final = []
-        for i in range(3,23):
+        for i in range(3,24):
             try:
                 final.append(int(tmp_split[i]))
             except ValueError:
-                final.append(0)
-        for i in range(24,len(tmp_split)):
+                final.append(5)
+        for i in range(25,len(tmp_split)):
             try:
                 final.append(int(tmp_split[i]))
             except ValueError:
-                final.append(0)
+                final.append(5)
 
-        record.append(final)
+        records.append(final)
+
+    # Convert all record values here:
+    record = np.array(records)
+    record = np.delete(record,np.s_[20],axis=1)
+    record = np.delete(record,np.s_[3],axis=1)
+    record = np.delete(record,np.s_[2],axis=1)
+    record = np.delete(record,np.s_[1],axis=1)
+    record = np.delete(record,np.s_[0],axis=1)
+
+    for x in record:
+        for y in range(0,len(x)):
+            if x[y] <= 0 or x[y] >= 6:
+                x[y] = 0
+            else:
+                x[y] = 5 - x[y]
+        print(x)
 
     # Our specified record
-    chosen_survey = record.pop(record_id - 1)
+    chosen_survey = record[record_id - 1]
     totals = []
     mean_totals = []
 
     # Here we go through and sort by groupings
+    # Must account for the negative attributes/scores
     # Determined by the .docx file
-    # 1 0-4
+    # 1 0-5 (All positive)
     first = chosen_survey[0:5]
-    totals.append(sum(first))
+    # Recalculate totals
+    tmp_total = 0
+    for x in first:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
         tmp_mean += sum(each[0:5])
     mean_totals.append(tmp_mean/len(record))
 
-    # 2 5-17
-    second = chosen_survey[5:18]
-    totals.append(sum(second))
+    # 2 5-15 (first 4 positive, rest negative)
+    second = chosen_survey[5:15]
+    # Recalculate totals
+    tmp_total = 0
+    for x in second:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[5:18])
+        tmp_mean += sum(each[5:15])
     mean_totals.append(tmp_mean/len(record))
 
-    # 3 18-24
-    third = chosen_survey[18:25]
-    totals.append(sum(third))
+    # 3 15-21 (all negative)
+    third = chosen_survey[15:23]
+    # Recalculate totals
+    tmp_total = 0
+    for x in third:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[18:25])
+        tmp_mean += sum(each[15:23])
     mean_totals.append(tmp_mean/len(record))
 
-    # 4 25-34
-    fourth = chosen_survey[25:35]
-    totals.append(sum(fourth))
+    # 4 21-31 (5 positive, 3 negative, 1 positive, 1 negative)
+    fourth = chosen_survey[23:43]
+    # Recalculate totals
+    tmp_total = 0
+    for x in fourth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[25:35])
+        tmp_mean += sum(each[23:43])
     mean_totals.append(tmp_mean/len(record))
 
-    # 5 35-42
-    fifth = chosen_survey[35:43]
-    totals.append(sum(fifth))
+    # 5 31-49 (all negative)
+    fifth = chosen_survey[43:57]
+    # Recalculate totals
+    tmp_total = 0
+    for x in fifth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[35:43])
+        tmp_mean += sum(each[43:57])
     mean_totals.append(tmp_mean/len(record))
 
-    # 6 43-50
-    sixth = chosen_survey[43:51]
-    totals.append(sum(sixth))
+    # 6 49-57 (6 negative, 2 positive)
+    sixth = chosen_survey[57:69]
+    # Recalculate totals
+    tmp_total = 0
+    for x in sixth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[43:51])
+        tmp_mean += sum(each[57:69])
     mean_totals.append(tmp_mean/len(record))
 
-    # 7 51-57
-    seventh = chosen_survey[51:58]
-    totals.append(sum(seventh))
+    # 7 57-63 (all negative)
+    seventh = chosen_survey[69:79]
+    # Recalculate totals
+    tmp_total = 0
+    for x in seventh:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[51:58])
+        tmp_mean += sum(each[69:79])
     mean_totals.append(tmp_mean/len(record))
 
-    # 8 58-60
-    eighth = chosen_survey[58:61]
-    totals.append(sum(eighth))
+    # 8 63-66 (all negative)
+    eighth = chosen_survey[79:85]
+    # Recalculate totals
+    tmp_total = 0
+    for x in eighth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[58:61])
+        tmp_mean += sum(each[79:85])
     mean_totals.append(tmp_mean/len(record))
 
-    # 9 61-76
-    ninth = chosen_survey[61:77]
-    totals.append(sum(ninth))
+    # 9 66-78 (all negative)
+    ninth = chosen_survey[85:105]
+    # Recalculate totals
+    tmp_total = 0
+    for x in ninth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
-        tmp_mean += sum(each[61:77])
+        tmp_mean += sum(each[85:105])
     mean_totals.append(tmp_mean/len(record))
 
-    # 10 77-86
-    tenth = chosen_survey[77:87]
-    totals.append(sum(tenth))
-    tmp_mean = 0
-    for each in record:
-        tmp_mean += sum(each[77:87])
-    mean_totals.append(tmp_mean/len(record))
-
-    # 11 87-89
-    eleventh = chosen_survey[87:90]
-    totals.append(sum(eleventh))
-    tmp_mean = 0
-    for each in record:
-        tmp_mean += sum(each[87:90])
-    mean_totals.append(tmp_mean/len(record))
-
-    # 12 90-94
-    twelfth = chosen_survey[90:95]
-    totals.append(sum(twelfth))
-    tmp_mean = 0
-    for each in record:
-        tmp_mean += sum(each[90:95])
-    mean_totals.append(tmp_mean/len(record))
-
-    # 13 95-104
-    thirteenth = chosen_survey[95:105]
-    totals.append(sum(thirteenth))
-    tmp_mean = 0
-    for each in record:
-        tmp_mean += sum(each[95:105])
-    mean_totals.append(tmp_mean/len(record))
-
-    # 14 105-114
-    fourteenth = chosen_survey[105:115]
-    totals.append(sum(fourteenth))
+    # 10 78-83 (all negative)
+    tenth = chosen_survey[105:115]
+    # Recalculate totals
+    tmp_total = 0
+    for x in tenth:
+        tmp_total += x
+    totals.append(tmp_total)
     tmp_mean = 0
     for each in record:
         tmp_mean += sum(each[105:115])
     mean_totals.append(tmp_mean/len(record))
 
+    # 11 83-86 (negative)
+    eleventh = chosen_survey[115:121]
+    # Recalculate totals
+    tmp_total = 0
+    for x in eleventh:
+        tmp_total += x
+    totals.append(tmp_total)
+    tmp_mean = 0
+    for each in record:
+        tmp_mean += sum(each[115:121])
+    mean_totals.append(tmp_mean/len(record))
+
+    # 12 86-91 (3 positive, 1 negative, 1 positive)
+    twelfth = chosen_survey[121:131]
+    # Recalculate totals
+    tmp_total = 0
+    for x in twelfth:
+        tmp_total += x
+    totals.append(tmp_total)
+    tmp_mean = 0
+    for each in record:
+        tmp_mean += sum(each[121:131])
+    mean_totals.append(tmp_mean/len(record))
+
+    # 13 91-100 (negative)
+    thirteenth = chosen_survey[131:149]
+    # Recalculate totals
+    tmp_total = 0
+    for x in thirteenth:
+        tmp_total += x
+    totals.append(tmp_total)
+    tmp_mean = 0
+    for each in record:
+        tmp_mean += sum(each[131:149])
+    mean_totals.append(tmp_mean/len(record))
+
+    # 14 100-111 (negative)
+    fourteenth = chosen_survey[149:len(record)]
+    # Recalculate totals
+    tmp_total = 0
+    for x in fourteenth:
+        tmp_total += x
+    totals.append(tmp_total)
+    tmp_mean = 0
+    for each in record:
+        tmp_mean += sum(each[149:len(record)])
+    mean_totals.append(tmp_mean/len(record))
+
     # We have totals (specific) and mean_totals (avg plot)
     return totals, mean_totals
-
-    # # Now let's draw the side-by-side
-    # import matplotlib.pyplot as plt
-    # import numpy as np
-    #
-    # # Used for the x-axis
-    # N = 14
-    # width = 0.4
-    # ind = np.arange(N)
-    #
-    # # Create the side-by-side plots
-    # fig, ax = plt.subplots()
-    # plot1 = ax.bar(ind, totals, width)
-    # plot2 = ax.bar(ind+width, mean_totals, width)
-    #
-    # # Customisation of the plots
-    # ax.set_title("Your horse against the average")
-    # ax.set_xticks(range(1,15))
-    # ax.set_xticklabels(labels, rotation=45, size=6)
-    # ax.legend((plot1[0], plot2[0]),('Your horse','The average'))
-    # plt.show()
-    #
-    # Previous version but less clear
-    # plot1 = plt.bar(range(1,15), totals)
-    # plot2 = plt.bar(range(1,15), mean_totals)
-    #
-    # plt.title("Your horse against the average")
-    # plt.xlabel("Groupings")
-    # plt.xticks(range(1,15), labels, rotation=45, size=6)
-    # plt.legend((plot1[0], plot2[0]), ('Your horse','The average'))
-    # plt.show()
