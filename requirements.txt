@@ -20,7 +20,7 @@ Jinja2==2.10
 jmespath==0.9.3
 jsonschema==2.6.0
 MarkupSafe==1.0
-numpy==1.14.3
+numpy==1.22.0
 parse==1.8.2
 parse-type==0.4.2
 pathspec==0.5.5
